@@ -1,7 +1,7 @@
 const db = require('../init');
 
 exports.getSingleWorkout = (req, res, next) => {
-  const docRef = db.collection('workouts').doc(req.params.workout_name);
+  const docRef = db.collection('workouts').doc(req.params.workout_id);
   docRef.get().then((workout) => {
     if (workout.exists) {
       const workoutData = (workout.data());
@@ -14,6 +14,19 @@ exports.getSingleWorkout = (req, res, next) => {
   });
 };
 
+exports.getWorkoutByUserId = (req, res, next) => {
+  const docRef = db.collection('workouts').doc(req.params.user_id);
+  docRef.get().then((workout) => {
+    if (workout.exists) {
+      const workoutData = (workout.data());
+      res.status(200).send({ workoutData });
+    } else {
+      res.status(404);
+    }
+  }).catch((err) => {
+    res.send({ error: err });
+  })
+}
 
 exports.postNewWorkout = (req, res, next) => {
   const newWorkout = {

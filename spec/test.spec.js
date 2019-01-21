@@ -13,13 +13,22 @@ describe('/api', () => {
         expect(res.body.exerciseData.exercise_name).to.equal('pull up');
       }));
   });
-  describe('/users/:username', () => {
+  describe('/users/:user_id', () => {
     it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
       .expect(200)
       .then((res) => {
         expect(res.body.userData).to.have.property('username', 'charli');
         expect(res.body.userData.name).to.equal('charlie');
       }));
+    describe('/workouts', () => {
+      it('gets all workouts of the user_id', () => {
+        return request.get('/api/users/1/workouts')
+        .expect(200)
+        .then((res) => {
+          expect(res.body.workouts).to.have.length(3);
+        })
+      });
+    });
   });
   describe('/workouts', () => {
     it('POST - 201 and a confirmation message', () => {
@@ -32,10 +41,10 @@ describe('/api', () => {
         .expect(201)
         .send(workout)
         .then((res) => {
-          expect(res.body).to.have.keys('msg');
+          expect(res.body.workout).to.have.keys('msg');
         });
     });
-    describe('/:workout_name', () => {
+    describe('/:workout_id', () => {
       it('GET - 200 & returns specified workout when provided with workout name', () => request.get('/api/workouts/new')
         .expect(200)
         .then((res) => {
