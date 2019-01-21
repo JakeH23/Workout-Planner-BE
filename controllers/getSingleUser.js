@@ -6,11 +6,10 @@ exports.getSingleUser = (req, res, next) => {
     if (user.exists) {
       const userData = (user.data());
       res.status(200).send({ userData });
-    }
-    else {
+    } else {
       res.status(404);
     }
   }).catch((err) => {
-     res.send({ error: err });
-  })
-}
+    res.send({ error: err });
+  });
+};
