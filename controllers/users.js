@@ -25,5 +25,5 @@ exports.getWorkoutByUserId = (req, res, next) => {
     }
   }).catch((err) => {
     res.send({ error: err });
-  })
-}
+  });
+};

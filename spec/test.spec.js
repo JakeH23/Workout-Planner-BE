@@ -21,13 +21,11 @@ describe('/api', () => {
         expect(res.body.userData.name).to.equal('charlie');
       }));
     describe('/workouts', () => {
-      it('gets all workouts of the user_id', () => {
-        return request.get('/api/users/1/workouts')
+      it('gets all workouts of the user_id', () => request.get('/api/users/1/workouts')
         .expect(200)
         .then((res) => {
           expect(res.body.workouts).to.have.length(3);
-        })
-      });
+        }));
     });
   });
   describe('/workouts', () => {
