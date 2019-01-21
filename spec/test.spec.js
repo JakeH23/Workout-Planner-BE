@@ -34,4 +34,13 @@ describe('/api', () => {
         });
     });
   });
+  describe('/muscles/:muscle', () => {
+    it('GET - 200 & returns the muscle name and description', () => {
+      return request.get('/api/muscles/chest')
+      .expect(200)
+      .then((res) => {
+        expect(res.body.muscleData.muscle_name).to.equal('chest');
+      })
+    });
+  });
 });
