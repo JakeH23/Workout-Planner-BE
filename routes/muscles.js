@@ -1,6 +1,6 @@
 const musclesRouter = require('express').Router();
 
-const { getSingleMuscle } = require('../controllers/getSingleMuscle');
+const { getSingleMuscle } = require('../controllers/muscles');
 
 musclesRouter.route('/:muscle').get(getSingleMuscle);
 

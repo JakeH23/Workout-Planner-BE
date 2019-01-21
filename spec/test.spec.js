@@ -22,9 +22,8 @@ describe('/api', () => {
       }));
   });
   describe('/workouts', () => {
-    it('POST - 201 and the posted workout', () => {
+    it('POST - 201 and a confirmation message', () => {
       const workout = {
-        created_at: Date.now(),
         created_by: 'Lovelace',
         private: true,
         workout_name: 'new_workout',
@@ -33,8 +32,7 @@ describe('/api', () => {
         .expect(201)
         .send(workout)
         .then((res) => {
-          expect(res.body.workout).to.have.length(1);
-          expect(res.body.workout).to.have.keys('created_by', 'workout_name');
+          expect(res.body).to.have.keys('msg');
         });
     });
     describe('/:workout_name', () => {

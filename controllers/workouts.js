@@ -13,3 +13,16 @@ exports.getSingleWorkout = (req, res, next) => {
     res.send({ error: err });
   });
 };
+
+
+exports.postNewWorkout = (req, res, next) => {
+  const newWorkout = {
+    ...req.body, created_at: new Date(),
+  };
+  db.collection('workouts').add(newWorkout).then(() => {
+    return res.status(201).send({ msg: 'Workout added.' });
+  }).catch((err) => {
+    res.status(500);
+    res.send({ error: err });
+  });
+};
