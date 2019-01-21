@@ -14,33 +14,44 @@ describe('/api', () => {
       }));
   });
   describe('/users/:username', () => {
-    it('GET - 200 & returns specified user when provided with username', () => {
-      return request.get('/api/users/charlie')
-        .expect(200)
+    it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
+      .expect(200)
+      .then((res) => {
+        expect(res.body.userData).to.have.property('username', 'charli');
+        expect(res.body.userData.name).to.equal('charlie');
+      }));
+  });
+  describe('/workouts', () => {
+    it('POST - 201 and the posted workout', () => {
+      const workout = {
+        created_at: Date.now(),
+        created_by: 'Lovelace',
+        private: true,
+        workout_name: 'new_workout',
+      };
+      return request.post('/api/workouts')
+        .expect(201)
+        .send(workout)
         .then((res) => {
-          expect(res.body.userData).to.have.property('username', 'charli');
-          expect(res.body.userData.name).to.equal('charlie');
+          expect(res.body.workout).to.have.length(1);
+          expect(res.body.workout).to.have.keys('created_by', 'workout_name');
         });
     });
-  });
-  describe('/workouts/:workout_name', () => {
-    it('GET - 200 & returns specified workout when provided with workout name', () => {
-      return request.get('/api/workouts/new')
+    describe('/:workout_name', () => {
+      it('GET - 200 & returns specified workout when provided with workout name', () => request.get('/api/workouts/new')
         .expect(200)
         .then((res) => {
           expect(res.body.workoutData).to.have.property('created_by');
           expect(res.body.workoutData.workout_name).to.equal('new');
           expect(res.body.workoutData.created_by).to.equal('me');
-        });
+        }));
     });
   });
   describe('/muscles/:muscle', () => {
-    it('GET - 200 & returns the muscle name and description', () => {
-      return request.get('/api/muscles/chest')
+    it('GET - 200 & returns the muscle name and description', () => request.get('/api/muscles/chest')
       .expect(200)
       .then((res) => {
         expect(res.body.muscleData.muscle_name).to.equal('chest');
-      })
-    });
+      }));
   });
 });

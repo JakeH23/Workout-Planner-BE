@@ -10,6 +10,6 @@ exports.getSingleMuscle = (req, res, next) => {
       res.status(404);
     }
   }).catch((err) => {
-    res.send({error: err});
-  })
-}
+    res.send({ error: err });
+  });
+};
