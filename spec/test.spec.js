@@ -15,7 +15,7 @@ describe('/api', () => {
   });
   describe('/users/:username', () => {
     it('GET - 200 & returns specified user when provided with username', () => {
-      request.get('/api/users/charlie')
+      return request.get('/api/users/charlie')
         .expect(200)
         .then((res) => {
           expect(res.body.userData).to.have.property('username', 'charli');
@@ -25,11 +25,12 @@ describe('/api', () => {
   });
   describe('/workouts/:workout_name', () => {
     it('GET - 200 & returns specified workout when provided with workout name', () => {
-      request.get('/api/workouts/new')
+      return request.get('/api/workouts/new')
         .expect(200)
         .then((res) => {
           expect(res.body.workoutData).to.have.property('created_by');
           expect(res.body.workoutData.workout_name).to.equal('new');
+          expect(res.body.workoutData.created_by).to.equal('me');
         });
     });
   });
