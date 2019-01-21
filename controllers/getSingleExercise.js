@@ -11,7 +11,6 @@ exports.getSingleExercise = (req, res, next) => {
       res.status(404);
     }
   }).catch((err) => {
-    console.log(err);
     res.send({ error: err });
   });
 };
