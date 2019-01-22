@@ -1,10 +1,13 @@
 const { expect } = require('chai');
 const supertest = require('supertest');
+const firebase = require('firebase');
 const app = require('../app');
 
 const request = supertest(app);
 
 describe('/api', () => {
+  const ref = firebase.database().ref('onlineState');
+  ref.onDisconnect().cancel();
   describe('/exercises/:exercise_id', () => {
     it(' GET - 200 & returns the exercise when provided with the correct id', () => request.get('/api/exercises/pull-up')
       .expect(200)
@@ -21,7 +24,7 @@ describe('/api', () => {
         expect(res.body.userData.name).to.equal('charlie');
       }));
     describe('/workouts', () => {
-      it('gets all workouts of the user_id', () => request.get('/api/users/1/workouts')
+      it('gets all workouts of the username', () => request.get('/api/users/charlie/workouts')
         .expect(200)
         .then((res) => {
           expect(res.body.workouts).to.have.length(3);
@@ -29,6 +32,11 @@ describe('/api', () => {
     });
   });
   describe('/workouts', () => {
+    it('GET - 200 & gets all workouts', () => request.get('/api/workouts')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).to.have.length(3);
+      }));
     it('POST - 201 and a confirmation message', () => {
       const workout = {
         created_by: 'Lovelace',
@@ -39,7 +47,7 @@ describe('/api', () => {
         .expect(201)
         .send(workout)
         .then((res) => {
-          expect(res.body.workout).to.have.keys('msg');
+          expect(res.body).to.have.keys('msg');
         });
     });
     describe('/:workout_id', () => {

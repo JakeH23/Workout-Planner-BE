@@ -1,5 +1,16 @@
 const db = require('../init');
 
+exports.getAllWorkouts = (req, res, next) => {
+  const docRef = db.collection('workouts');
+  docRef.get()
+    .then((workouts) => {
+      const workoutsData = workouts.data();
+      res.status(200).send({ workoutsData });
+    }).catch((err) => {
+      res.send({ error: err });
+    });
+};
+
 exports.getSingleWorkout = (req, res, next) => {
   const docRef = db.collection('workouts').doc(req.params.workout_name);
   docRef
