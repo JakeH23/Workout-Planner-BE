@@ -1,4 +1,3 @@
-const db = require('../init');
 
 exports.getAllUsers = (req, res, next) => {
 

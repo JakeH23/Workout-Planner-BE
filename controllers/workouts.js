@@ -1,4 +1,3 @@
-const db = require('../init');
 
 exports.getAllWorkouts = (req, res, next) => {
 
