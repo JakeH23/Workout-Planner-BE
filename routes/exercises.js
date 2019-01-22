@@ -1,9 +1,11 @@
 const exerciseRouter = require('express').Router();
-const { getAllExercises, getSingleExercise } = require('../controllers/exercises');
+const { getAllExercises, postNewExercise, getSingleExercise } = require('../controllers/exercises');
 
 
 exerciseRouter.route('/')
-  .get(getAllExercises);
+  .get(getAllExercises)
+  .post(postNewExercise);
+
 
 exerciseRouter.route('/:exercise_name')
   .get(getSingleExercise);
