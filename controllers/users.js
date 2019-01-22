@@ -1,5 +1,16 @@
 const db = require('../init');
 
+exports.getAllUsers = (req, res, next) => {
+  const docRef = db.collection('users');
+  docRef.get().then((users) => {
+    const usersData = users.data();
+    res.status(200).send({ usersData });
+  })
+    .catch((err) => {
+      res.send({ error: err });
+    });
+};
+
 exports.getSingleUser = (req, res, next) => {
   const docRef = db.collection('users').doc(req.params.user_id);
   docRef.get().then((user) => {

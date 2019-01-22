@@ -35,7 +35,7 @@ exports.postNewExercise = (req, res, next) => {
   };
   db.collection('exercises')
     .add(newExercise)
-    .then(() => res.status(201).send({msg: 'Exercises Added'}))
+    .then(() => res.status(201).send({msg: 'Exercise Added'}))
     .catch((err) => {
       res.status(500);
       res.send({ error: err });

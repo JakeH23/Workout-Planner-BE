@@ -8,27 +8,29 @@ const request = supertest(app);
 describe('/api', () => {
   const ref = firebase.database().ref('onlineState');
   ref.onDisconnect().cancel();
-  describe('/exercises/:exercise_id', () => {
-    it(' GET - 200 & returns the exercise when provided with the correct id', () => request.get('/api/exercises/pull-up')
-      .expect(200)
-      .then((res) => {
-        expect(res.body.exerciseData).to.have.property('exercise_name');
-        expect(res.body.exerciseData.exercise_name).to.equal('pull up');
-      }));
-  });
-  describe('/users/:user_id', () => {
-    it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
-      .expect(200)
-      .then((res) => {
-        expect(res.body.userData).to.have.property('username', 'charli');
-        expect(res.body.userData.name).to.equal('charlie');
-      }));
-    describe('/workouts', () => {
-      it('gets all workouts of the username', () => request.get('/api/users/charlie/workouts')
+  describe('/users', () => {
+    it('GET - 200 and returns all users', () => {
+      return request.get('/api/users')
         .expect(200)
         .then((res) => {
-          expect(res.body.workouts).to.have.length(3);
+          expect(res.body).to.have.length(3);
+          expect(res.body.users[0]).to.have.property('username');
+        }) 
+    });
+    describe('/:user_id', () => {
+      it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
+        .expect(200)
+        .then((res) => {
+          expect(res.body.userData).to.have.property('username', 'charli');
+          expect(res.body.userData.name).to.equal('charlie');
         }));
+      describe('/workouts', () => {
+        it('gets all workouts of the username', () => request.get('/api/users/charlie/workouts')
+          .expect(200)
+          .then((res) => {
+            expect(res.body.workouts).to.have.length(3);
+          }));
+      });
     });
   });
   describe('/workouts', () => {
@@ -37,7 +39,7 @@ describe('/api', () => {
       .then((res) => {
         expect(res.body).to.have.length(3);
       }));
-    it('POST - 201 and a confirmation message', () => {
+    it.skip('POST - 201 and a confirmation message', () => {
       const workout = {
         created_by: 'Lovelace',
         private: true,
@@ -83,7 +85,7 @@ describe('/api', () => {
           expect(res.body.exercises[0]).to.have.property('major_muscle');
         });
     });
-    it('POST - 201 and successfully adds an exercise to the database', () => {
+    it.skip('POST - 201 and successfully adds an exercise to the database', () => {
       const newExercise = {
         name: 'Test-Exercise',
         major_muscle: 'Test_Muscle',
@@ -97,6 +99,14 @@ describe('/api', () => {
         .then((res) => {
           expect(res.body.msg).to.equal('Exercise Added');
         });
+    });
+    describe('/exercises/:exercise_id', () => {
+      it(' GET - 200 & returns the exercise when provided with the correct id', () => request.get('/api/exercises/pull-up')
+        .expect(200)
+        .then((res) => {
+          expect(res.body.exerciseData).to.have.property('exercise_name');
+          expect(res.body.exerciseData.exercise_name).to.equal('pull up');
+        }));
     });
   });
 });
