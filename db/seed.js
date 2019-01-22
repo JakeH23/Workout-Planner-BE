@@ -9,8 +9,4 @@ const seedDB = ({ muscles, users }) =>
       Promise.all([Muscles.insertMany(muscles), Users.insertMany(users)])
     );
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f89e70c445297f600c0f6fcf484e6027fe6de3ba
 module.exports = { seedDB };
