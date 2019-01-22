@@ -62,14 +62,23 @@ describe('/api', () => {
         }));
     });
   });
-  describe.only('/muscles/:muscle', () => {
-    it('GET - 200 & returns the muscle name and description', () => request.get('/api/muscles/chest')
+  describe.only('/muscles', () => {
+    it('GET - 200 & returns an array of all muscles', () => {
+      return request.get('/api/muscles')
       .expect(200)
       .then((res) => {
-        expect(res.body.muscle_name).to.equal('chest');
-      }));
+        expect(res.body.muscles).to.have.length(11);
+      })
+    });
+    describe('/:muscle', () => {
+      it('GET - 200 & returns the muscle name and description', () => request.get('/api/muscles/chest')
+        .expect(200)
+        .then((res) => {
+          expect(res.body.muscle.muscle_name).to.equal('chest');
+        }));
+    });
   });
-  describe('/exercises', () => {
+   describe('/exercises', () => {
     it('GET - 200 and returns all exercises', () => request.get('/api/exercises')
       .expect(200)
       .then((res) => {
