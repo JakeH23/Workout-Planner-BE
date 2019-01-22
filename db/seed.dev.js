@@ -6,7 +6,7 @@ const { muscles, users } = require("./testData/index");
 mongoose
   .connect(
     DB_URL,
-    { useNewUrlParser: true },
+    { useNewUrlParser: true }
   )
   .then(() => seedDB({ muscles, users }))
   .then(() => mongoose.disconnect())
