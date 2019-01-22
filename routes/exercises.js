@@ -1,7 +1,12 @@
 const exerciseRouter = require('express').Router();
-const { getSingleExercise } = require('../controllers/exercises');
+const { getAllExercises, getSingleExercise } = require('../controllers/exercises');
 
-exerciseRouter.route('/:exercise_name').get(getSingleExercise);
+
+exerciseRouter.route('/')
+  .get(getAllExercises);
+
+exerciseRouter.route('/:exercise_name')
+  .get(getSingleExercise);
 
 
 module.exports = exerciseRouter;

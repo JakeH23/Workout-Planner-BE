@@ -51,13 +51,20 @@ describe('/api', () => {
         });
     });
     describe('/:workout_id', () => {
-      it('GET - 200 & returns specified workout when provided with workout name', () => request.get('/api/workouts/new')
+      it('GET - 200 & returns specified workout when provided with workout name', () => request.get('/api/workouts/new_workout')
         .expect(200)
         .then((res) => {
           expect(res.body.workoutData).to.have.property('created_by');
-          expect(res.body.workoutData.workout_name).to.equal('new');
+          expect(res.body.workoutData.workout_name).to.equal('new_workout');
           expect(res.body.workoutData.created_by).to.equal('me');
         }));
+      it('DELETE 204 and responds with a delete successful message', () => {
+        return request.delete('/api/workouts/new_workout')
+          .expect(204)
+          .then((res) => {
+            expect(res.body.msg).to.equal('successful deletion');
+          });
+      });
     });
   });
   describe('/muscles/:muscle', () => {
@@ -66,5 +73,15 @@ describe('/api', () => {
       .then((res) => {
         expect(res.body.muscleData.muscle_name).to.equal('chest');
       }));
+  });
+  describe('/exercises', () => {
+    it('GET - 200 and returns all exercises', () => {
+      return request.get('/api/exercises')
+        .expect(200)
+        .then((res) => {
+          expect(res.body).to.have.length(10);
+          expect(res.body.exercises[0]).to.have.property('major_muscle');
+        });
+    });
   });
 });

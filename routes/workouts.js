@@ -11,7 +11,9 @@ workoutRouter.route('/')
   .post(postNewWorkout);
 
 
-workoutRouter.route('/:workout_name').get(getSingleWorkout);
-workoutRouter.route('/:workout_id').delete(deleteWorkout);
+workoutRouter.route('/:workout_name')
+  .get(getSingleWorkout)
+  .delete(deleteWorkout);
+
 
 module.exports = workoutRouter;

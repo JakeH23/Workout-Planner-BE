@@ -43,10 +43,10 @@ exports.postNewWorkout = (req, res, next) => {
 };
 
 exports.deleteWorkout = (req, res, next) => {
-  const { workout_id } = req.params;
+  const { workout_name } = req.params;
 
   db.collection('workouts')
-    .doc(workout_id)
+    .doc(workout_name)
     .delete()
     .then(() => {
       res.status(204).send({ msg: 'successful deletion' });
