@@ -5,10 +5,10 @@ const { getAllUsers, getSingleUser, getWorkoutByUserId } = require('../controlle
 usersRouter.route('/')
   .get(getAllUsers);
 
-usersRouter.route('/:user_id')
+usersRouter.route('/:username')
   .get(getSingleUser);
 
-usersRouter.route('/:user_id/workouts')
+usersRouter.route('/:username/workouts')
   .get(getWorkoutByUserId);
 
 

@@ -17,12 +17,12 @@ describe('/api', () => {
           expect(res.body.users[0]).to.have.property('username');
         }) 
     });
-    describe('/:user_id', () => {
-      it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
+    describe('/:username', () => {
+      it.only('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
         .expect(200)
         .then((res) => {
           expect(res.body.userData).to.have.property('username', 'charli');
-          expect(res.body.userData.name).to.equal('charlie');
+          expect(res.body.userData.username).to.equal('charli');
         }));
       describe('/workouts', () => {
         it('gets all workouts of the username', () => request.get('/api/users/charlie/workouts')
