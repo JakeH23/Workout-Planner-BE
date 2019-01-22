@@ -14,7 +14,8 @@ exports.getAllExercises = (req, res, next) => {
 
 
 exports.getSingleExercise = (req, res, next) => {
-  const docRef = db.collection('exercises').doc(req.params.exercise_name);
+  const { exercise_name } = req.params;
+  const docRef = db.collection('exercises').doc(exercise_name);
   docRef.get().then((exercise) => {
     if (exercise.exists) {
       const exerciseData = (exercise.data());
@@ -26,3 +27,17 @@ exports.getSingleExercise = (req, res, next) => {
     res.send({ error: err });
   });
 };
+
+exports.postNewExercise = (req, res, next) => {
+  const newExercise = {
+    ...req.body,
+    created_at: new Date(),
+  };
+  db.collection('exercises')
+    .add(newExercise)
+    .then(() => res.status(201).send({msg: 'Exercises Added'}))
+    .catch((err) => {
+      res.status(500);
+      res.send({ error: err });
+    });
+}

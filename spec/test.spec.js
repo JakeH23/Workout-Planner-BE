@@ -83,5 +83,20 @@ describe('/api', () => {
           expect(res.body.exercises[0]).to.have.property('major_muscle');
         });
     });
+    it('POST - 201 and successfully adds an exercise to the database', () => {
+      const newExercise = {
+        name: 'Test-Exercise',
+        major_muscle: 'Test_Muscle',
+        minor_muscles: ['one', 'two'],
+        description: ['this is a test exercise'],
+        created_by: ['test_user']
+      };
+      return request.post('/api/exercises')
+        .expect(201)
+        .send(newExercise)
+        .then((res) => {
+          expect(res.body.msg).to.equal('Exercise Added');
+        });
+    });
   });
 });
