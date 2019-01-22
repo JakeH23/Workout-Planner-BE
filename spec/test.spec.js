@@ -62,11 +62,11 @@ describe('/api', () => {
         }));
     });
   });
-  describe('/muscles/:muscle', () => {
+  describe.only('/muscles/:muscle', () => {
     it('GET - 200 & returns the muscle name and description', () => request.get('/api/muscles/chest')
       .expect(200)
       .then((res) => {
-        expect(res.body.muscleData.muscle_name).to.equal('chest');
+        expect(res.body.muscle_name).to.equal('chest');
       }));
   });
   describe('/exercises', () => {
