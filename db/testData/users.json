@@ -1,12 +1,17 @@
 [
   {
     "username": "charlie",
-    "password": "",
+    "password": "???",
     "saved_workouts": "[]"
   },
   {
-    "username": "dedekind561",
-    "password": "",
+    "username": "mike",
+    "password": "????",
+    "saved_workouts": "[]"
+  },
+  {
+    "username": "nat",
+    "password": "?????",
     "saved_workouts": "[]"
   }
 ]
