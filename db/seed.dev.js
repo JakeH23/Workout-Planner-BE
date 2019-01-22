@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");
-const { seedDB } = require("../db/seed");
-const { DB_URL } = require("../config");
-const muscles = require("./testData/muscles.json");
+const mongoose = require('mongoose');
+const { seedDB } = require('../db/seed');
+const { DB_URL } = require('../config');
+const muscles = require('./testData/muscles.json');
 
 mongoose
   .connect(
     DB_URL,
-    { useNewUrlParser: true }
+    { useNewUrlParser: true },
   )
   .then(() => seedDB({ muscles }))
   .then(() => mongoose.disconnect())
