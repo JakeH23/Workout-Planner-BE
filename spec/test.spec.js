@@ -5,12 +5,12 @@ const app = require('../app');
 const request = supertest(app);
 
 describe('/api', () => {
-  describe('/users', () => {
-    it('GET - 200 and returns all users', () => request.get('/api/users')
+  describe.only('/users', () => {
+    it.only('GET - 200 and returns all users', () => request.get('/api/users')
       .expect(200)
       .then((res) => {
-        expect(res.body).to.have.length(3);
-        expect(res.body.users[0]).to.have.property('username');
+        expect(res.body.users).to.have.length(3);
+        expect(res.body.users[0]).to.have.property('user_name');
       }));
     describe('/:username', () => {
       it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
