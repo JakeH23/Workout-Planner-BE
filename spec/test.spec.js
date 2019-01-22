@@ -1,13 +1,10 @@
 const { expect } = require('chai');
 const supertest = require('supertest');
-const firebase = require('firebase');
 const app = require('../app');
 
 const request = supertest(app);
 
 describe('/api', () => {
-  const ref = firebase.database().ref('onlineState');
-  ref.onDisconnect().cancel();
   describe('/users', () => {
     it('GET - 200 and returns all users', () => {
       return request.get('/api/users')
@@ -18,7 +15,7 @@ describe('/api', () => {
         }) 
     });
     describe('/:username', () => {
-      it.only('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
+      it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
         .expect(200)
         .then((res) => {
           expect(res.body.userData).to.have.property('username', 'charli');
@@ -39,7 +36,7 @@ describe('/api', () => {
       .then((res) => {
         expect(res.body).to.have.length(3);
       }));
-    it.skip('POST - 201 and a confirmation message', () => {
+    it('POST - 201 and a confirmation message', () => {
       const workout = {
         created_by: 'Lovelace',
         private: true,
