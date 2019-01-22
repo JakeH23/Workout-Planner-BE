@@ -6,14 +6,12 @@ const request = supertest(app);
 
 describe('/api', () => {
   describe('/users', () => {
-    it('GET - 200 and returns all users', () => {
-      return request.get('/api/users')
-        .expect(200)
-        .then((res) => {
-          expect(res.body).to.have.length(3);
-          expect(res.body.users[0]).to.have.property('username');
-        }) 
-    });
+    it('GET - 200 and returns all users', () => request.get('/api/users')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).to.have.length(3);
+        expect(res.body.users[0]).to.have.property('username');
+      }));
     describe('/:username', () => {
       it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
         .expect(200)
@@ -57,13 +55,11 @@ describe('/api', () => {
           expect(res.body.workoutData.workout_name).to.equal('new_workout');
           expect(res.body.workoutData.created_by).to.equal('me');
         }));
-      it('DELETE 204 and responds with a delete successful message', () => {
-        return request.delete('/api/workouts/new_workout')
-          .expect(204)
-          .then((res) => {
-            expect(res.body.msg).to.equal('successful deletion');
-          });
-      });
+      it('DELETE 204 and responds with a delete successful message', () => request.delete('/api/workouts/new_workout')
+        .expect(204)
+        .then((res) => {
+          expect(res.body.msg).to.equal('successful deletion');
+        }));
     });
   });
   describe('/muscles/:muscle', () => {
@@ -74,21 +70,19 @@ describe('/api', () => {
       }));
   });
   describe('/exercises', () => {
-    it('GET - 200 and returns all exercises', () => {
-      return request.get('/api/exercises')
-        .expect(200)
-        .then((res) => {
-          expect(res.body).to.have.length(10);
-          expect(res.body.exercises[0]).to.have.property('major_muscle');
-        });
-    });
+    it('GET - 200 and returns all exercises', () => request.get('/api/exercises')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).to.have.length(10);
+        expect(res.body.exercises[0]).to.have.property('major_muscle');
+      }));
     it.skip('POST - 201 and successfully adds an exercise to the database', () => {
       const newExercise = {
         name: 'Test-Exercise',
         major_muscle: 'Test_Muscle',
         minor_muscles: ['one', 'two'],
         description: ['this is a test exercise'],
-        created_by: ['test_user']
+        created_by: ['test_user'],
       };
       return request.post('/api/exercises')
         .expect(201)
