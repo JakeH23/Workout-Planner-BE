@@ -9,15 +9,16 @@ describe('/api', () => {
     it('GET - 200 and returns all users', () => request.get('/api/users')
       .expect(200)
       .then((res) => {
-        expect(res.body).to.have.length(3);
-        expect(res.body.users[0]).to.have.property('username');
+        expect(res.body.users).to.have.length(3);
+        expect(res.body.users[0]).to.have.property('user_name');
       }));
     describe('/:username', () => {
-      it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
+      it.only('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
         .expect(200)
         .then((res) => {
-          expect(res.body.userData).to.have.property('username', 'charli');
-          expect(res.body.userData.username).to.equal('charli');
+          console.log(res.body);
+          expect(res.body.user).to.have.property('user_name', 'charlie');
+          expect(res.body.user.user_name).to.equal('charlie');
         }));
       describe('/workouts', () => {
         it('gets all workouts of the username', () => request.get('/api/users/charlie/workouts')
