@@ -168,10 +168,17 @@ describe("/api", () => {
           expect(res.body.msg).to.equal("Exercise Added");
         });
     });
-    describe("/exercises/:exercise_id", () => {
-      it(" GET - 200 & returns the exercise when provided with the correct id", () =>
-        request
-          .get("/api/exercises/pull-up")
+    describe('/:exercise_id', () => {
+      it(' GET - 200 & returns the exercise when provided with the correct id', () => request.get('/api/exercises/Pull%20Up')
+        .expect(200)
+        .then((res) => {
+          expect(res.body.exercise).to.have.property('content');
+          expect(res.body.exercise.title).to.equal('Pull Up');
+        }));
+    }); 
+    describe('/muscle/:major_muscle', () => {
+      it('GET - 200 and returns the exercises of the major muscle group', () => {
+        return request.get('/api/exercises/muscle/Chest')
           .expect(200)
           .then(res => {
             expect(res.body.exerciseData).to.have.property("exercise_name");

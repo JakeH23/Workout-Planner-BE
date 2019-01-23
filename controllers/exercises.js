@@ -11,10 +11,10 @@ exports.getAllExercises = (req, res, next) => {
 };
 
 exports.getSingleExercise = (req, res, next) => {
-  Exercise.find({ exercise_name: req.params.exercise_name })
-    .then(([exercise]) => {
+  Exercise.find({ title: req.params.title })
+    .then((exercise) => {
       if (!exercise.length) return Promise.reject({ status: 404, msg: 'exercise not found' });
-
+      [exercise ] = exercise;
       res.send({ exercise });
     })
     .catch(next);
