@@ -13,9 +13,18 @@ exports.formatExercises = (exercises, userDocs) => {
 
 exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => {
   return workouts.map(workout => {
-    const findExerciseId = exerciseDocs.find(exercise => {
-      return workout.exercises.map(exercise => exercise === exercise.name);
-    })._id;
+    const arr = [];
+    const findExerciseId = exerciseDocs.forEach(exercise => {
+      const exId = new Promise((resolve, reject) => {
+        return workout.exercises.find(ex => {
+          if (ex === exercise.title) arr.push(exercise._id);
+          if (workout.exercises.length === arr.length) resolve(arr);
+        });
+      });
+      return exId.then(val => console.log(val));
+      //   if (arr.length === workout.exercises.length) return arr;
+    });
+
     const findUserId = userDocs.find(user => {
       return user.user_name === workout.created_by;
     })._id;
