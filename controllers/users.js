@@ -1,4 +1,4 @@
-const Users = require("../models/Users");
+const Users = require('../models/Users');
 const Workouts = require('../models/Workout');
 
 
@@ -24,7 +24,7 @@ exports.getSingleUser = (req, res, next) => {
 exports.getWorkoutByUserId = (req, res, next) => {
   Workouts.find({ belongs_to: req.params.username })
     .then((userWorkouts) => {
-      if (!userWorkouts.length) return Promise.reject({ status: 404, msg: 'no workouts found'});
+      if (!userWorkouts.length) return Promise.reject({ status: 404, msg: 'no workouts found' });
       console.log(userWorkouts);
       res.status(200).send({ userWorkouts });
     })

@@ -1,11 +1,10 @@
-const Exercise = require("../models/Exercise");
-const User = require("../models/Users");
+const Exercise = require('../models/Exercise');
+const Users = require('../models/Users');
 
 exports.getAllExercises = (req, res, next) => {
   Exercise.find()
-    .then(exercises => {
-      if (!exercises.length)
-        return Promise.reject({ status: 404, msg: "exercise not found" });
+    .then((exercises) => {
+      if (!exercises.length) return Promise.reject({ status: 404, msg: 'exercise not found' });
       res.send({ exercises });
     })
     .catch(next);
@@ -14,8 +13,7 @@ exports.getAllExercises = (req, res, next) => {
 exports.getSingleExercise = (req, res, next) => {
   Exercise.find({ exercise_name: req.params.exercise_name })
     .then(([exercise]) => {
-      if (!exercise.length)
-        return Promise.reject({ status: 404, msg: "exercise not found" });
+      if (!exercise.length) return Promise.reject({ status: 404, msg: 'exercise not found' });
 
       res.send({ exercise });
     })
@@ -28,15 +26,22 @@ exports.postNewExercise = (req, res, next) => {
     major_muscle: req.body.major_muscle,
     minor_muscles: req.body.minor_muscles,
     content: req.body.content,
-    created_by: req.body.created_by
+    created_by: req.body.created_by,
   };
   Exercise.create(newExercise)
-    .then(exercise => {
-      return res.status(201).send({ exercise });
-    })
-    .catch(err => {
-      if (err.name === "ValidationError") {
-        next({ status: 400, msg: "bad post request" });
+    .then(exercise => res.status(201).send({ exercise }))
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next({ status: 400, msg: 'bad post request' });
       }
     });
 };
+
+exports.getExerciseByMajorMuscle = (req, res, next) => {
+  Exercise.find({ major_muscle: req.params.major_muscle })
+    .then((exercises) => {
+      if (!exercises.length) return Promise.reject({status: 404, msg: 'This muscle has no exercises'})
+      res.status(200).send({ exercises });
+    })
+    .catch(next);
+}

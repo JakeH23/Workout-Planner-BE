@@ -1,26 +1,26 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
 const WorkoutSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
-  exercises: [{ type: mongoose.Schema.Types.ObjectId, ref: "exercises" }],
+  exercises: [{ type: mongoose.Schema.Types.ObjectId, ref: 'exercises' }],
   created_at: {
     type: Date,
-    default: Date.now
+    default: Date.now(),
   },
   private: {
     type: Boolean,
-    required: true
+    required: true,
   },
   created_by: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
-    required: true
-  }
+    ref: 'users',
+    required: true,
+  },
 });
 
-module.exports = mongoose.model("workouts", WorkoutSchema);
+module.exports = mongoose.model('workouts', WorkoutSchema);
