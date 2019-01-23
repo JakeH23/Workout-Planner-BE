@@ -110,7 +110,7 @@ describe('/api', () => {
     }); 
     describe.only('/:major_muscle', () => {
       it('GET - 200 and returns the exercises of the major muscle group', () => {
-        return request.get('/api/exercises/Chest')
+        return request.get('/api/exercises/muscle/Chest')
           .expect(200)
           .then((res) => {
             expect(res.body.exercises).to.have.length(1);
