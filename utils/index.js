@@ -22,7 +22,6 @@ exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => {
         });
       });
       return exId.then(val => console.log(val));
-      //   if (arr.length === workout.exercises.length) return arr;
     });
 
     const findUserId = userDocs.find(user => {
