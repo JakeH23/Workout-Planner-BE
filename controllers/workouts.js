@@ -34,7 +34,6 @@ exports.postNewWorkout = (req, res, next) => {
 }
 
 
-
 exports.deleteWorkout = (req, res, next) => {
   Workouts.remove({ name: req.params.workout_name })
     .then(() => {

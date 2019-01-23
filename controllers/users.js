@@ -1,5 +1,6 @@
-const Users = require('../models/Users');
-const Workouts = require('../models/Workout')
+const Users = require("../models/Users");
+const Workouts = require('../models/Workout');
+
 
 exports.getAllUsers = (req, res, next) => {
   Users.find()

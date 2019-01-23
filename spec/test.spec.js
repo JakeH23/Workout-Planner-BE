@@ -37,6 +37,7 @@ describe('/api', () => {
     it('POST - 201 and a confirmation message', () => {
       const workout = {
         created_by: 'Lovelace',
+        exercises: ['pull up', 'chest press']
         private: true,
         workout_name: 'new_workout',
       };
