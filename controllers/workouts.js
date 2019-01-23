@@ -20,6 +20,21 @@ exports.getSingleWorkout = (req, res, next) => {
     .catch(next);
 };
 
+exports.postNewWorkout = (req, res, next) => {
+  Workouts.create({
+    name: req.body.name,
+    exercises: req.body.exercises,
+    private: req.body.private,
+    created_by: req.body.created_by,
+  })
+    .then((newWorkout) => {
+      res.status(201).send({ newWorkout });
+    })
+    .catch(next);
+}
+
+
+
 exports.deleteWorkout = (req, res, next) => {
   Workouts.remove({ name: req.params.workout_name })
     .then(() => {
