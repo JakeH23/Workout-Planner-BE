@@ -14,7 +14,7 @@ exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((wor
       if (ex === exercise.title) arr.push(exercise._id);
       if (workout.exercises.length === arr.length) resolve(arr);
     }));
-    return exId.then(val => console.log(val));
+    return exId.then(val => val);
     //   if (arr.length === workout.exercises.length) return arr;
   });
 

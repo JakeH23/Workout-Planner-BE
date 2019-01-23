@@ -1,5 +1,7 @@
 const exerciseRouter = require('express').Router();
-const { getAllExercises, postNewExercise, getSingleExercise, getExerciseByMajorMuscle } = require('../controllers/exercises');
+const {
+  getAllExercises, postNewExercise, getSingleExercise, getExerciseByMajorMuscle,
+} = require('../controllers/exercises');
 
 
 exerciseRouter.route('/')
