@@ -13,10 +13,9 @@ describe('/api', () => {
         expect(res.body.users[0]).to.have.property('user_name');
       }));
     describe('/:username', () => {
-      it.only('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
+      it('GET - 200 & returns specified user when provided with username', () => request.get('/api/users/charlie')
         .expect(200)
         .then((res) => {
-          console.log(res.body);
           expect(res.body.user).to.have.property('user_name', 'charlie');
           expect(res.body.user.user_name).to.equal('charlie');
         }));
@@ -63,7 +62,7 @@ describe('/api', () => {
         }));
     });
   });
-  describe.only('/muscles', () => {
+  describe('/muscles', () => {
     it('GET - 200 & returns an array of all muscles', () => request.get('/api/muscles')
       .expect(200)
       .then((res) => {
@@ -84,7 +83,7 @@ describe('/api', () => {
         expect(res.body).to.have.length(10);
         expect(res.body.exercises[0]).to.have.property('major_muscle');
       }));
-    it.skip('POST - 201 and successfully adds an exercise to the database', () => {
+    it('POST - 201 and successfully adds an exercise to the database', () => {
       const newExercise = {
         name: 'Test-Exercise',
         major_muscle: 'Test_Muscle',
