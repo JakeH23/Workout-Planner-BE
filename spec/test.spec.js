@@ -29,7 +29,7 @@ describe('/api', () => {
     });
   });
   describe('/workouts', () => {
-    it('GET - 200 & gets all workouts', () => request.get('/api/workouts')
+    it.only('GET - 200 & gets all workouts', () => request.get('/api/workouts')
       .expect(200)
       .then((res) => {
         expect(res.body).to.have.length(3);
@@ -37,7 +37,7 @@ describe('/api', () => {
     it('POST - 201 and a confirmation message', () => {
       const workout = {
         created_by: 'Lovelace',
-        exercises: ['pull up', 'chest press']
+        exercises: ['Squat', 'Lunge'],
         private: true,
         workout_name: 'new_workout',
       };
