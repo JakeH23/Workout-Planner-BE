@@ -1,6 +1,6 @@
 const exerciseRouter = require('express').Router();
 const {
-  getAllExercises, postNewExercise, getSingleExercise, getExerciseByMajorMuscle,
+  getAllExercises, postNewExercise, getSingleExercise, getExerciseByMajorMuscle, getExerciseByUserId,
 } = require('../controllers/exercises');
 
 
@@ -14,6 +14,9 @@ exerciseRouter.route('/:title')
 
 exerciseRouter.route('/muscle/:major_muscle')
   .get(getExerciseByMajorMuscle);
+
+exerciseRouter.route('/users/:created_by')
+  .get(getExerciseByUserId);
 
 
 module.exports = exerciseRouter;

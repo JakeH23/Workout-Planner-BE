@@ -168,12 +168,12 @@ describe('/api', () => {
           expect(res.body.exerciseData.exercise_name).to.equal('pull up');
         }));
     });
-    describe.only('/user/:user_name', () => {
+    describe.only('/users/:created_by', () => {
       it('GET - 200 and returns the exercises created by the user_id', () => {
-        return request.get('/api/exercises/user/charlie/5c488fa936ee635b2d12daad')
+        return request.get(`/api/exercises/users/${exercisesDocs[0].created_by}`)
           .expect(200)
           .then((res) => {
-            expect(res.body.exercises).to.have.length(1);
+            expect(res.body.exercises).to.have.length(6);
           });
       });
     });
