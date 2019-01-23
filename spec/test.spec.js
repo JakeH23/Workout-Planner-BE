@@ -100,13 +100,23 @@ describe('/api', () => {
           expect(res.body.msg).to.equal('Exercise Added');
         });
     });
-    describe('/exercises/:exercise_id', () => {
+    describe('/:exercise_id', () => {
       it(' GET - 200 & returns the exercise when provided with the correct id', () => request.get('/api/exercises/pull-up')
         .expect(200)
         .then((res) => {
           expect(res.body.exerciseData).to.have.property('exercise_name');
           expect(res.body.exerciseData.exercise_name).to.equal('pull up');
         }));
-    });
+    }); 
+    describe.only('/:major_muscle', () => {
+      it('GET - 200 and returns the exercises of the major muscle group', () => {
+        return request.get('/api/exercises/Chest')
+          .expect(200)
+          .then((res) => {
+            expect(res.body.exercises).to.have.length(1);
+            expect(res.body.exercises[0].title).to.equal('Push Up');
+          });
+      })
+    })
   });
 });
