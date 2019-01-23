@@ -56,4 +56,4 @@ const seedDB = ({ muscles, users, exercises, workouts, completedWorkouts }) =>
       });
     });
 
-module.exports = { seedDB };
+module.exports = seedDB;
