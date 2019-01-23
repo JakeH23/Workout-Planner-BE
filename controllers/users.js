@@ -1,4 +1,5 @@
 const Users = require("../models/Users");
+const Workout = require("../models/Workout");
 
 exports.getAllUsers = (req, res, next) => {
   Users.find()

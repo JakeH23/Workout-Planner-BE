@@ -1,28 +1,28 @@
 [
   {
     "name": "workout 1",
-    "exercises": "[Push Up, Pull Up]",
+    "exercises": ["Push Up", "Pull Up"],
     "created_by": "charlie",
     "private": "true",
     "created_at": 1471522072389
   },
   {
     "name": "workout 2",
-    "exercises": "[Squat, Lunge]",
+    "exercises": ["Squat", "Lunge"],
     "created_by": "charlie",
     "private": "true",
     "created_at": 1471522072388
   },
   {
     "name": "workout 3",
-    "exercises": "[Push Up, Squat]",
+    "exercises": ["Push Up", "Squat"],
     "created_by": "mike",
     "private": "true",
     "created_at": 1471522072387
   },
   {
     "name": "workout 4",
-    "exercises": "[Pull Up, Lunge]",
+    "exercises": ["Pull Up", "Lunge"],
     "created_by": "nat",
     "private": "true",
     "created_at": 1471522072386
