@@ -1,16 +1,13 @@
 const mongoose = require("mongoose");
-// const {
-//   Muscles,
-//   Users,
-//   CompletedWorkout,
-//   Exercise,
-//   Workout
-// } = require("../models/index");
-const Exercise = require("../models/Exercise");
-const Users = require("../models/Users");
-const Workout = require("../models/Workout");
-const Muscles = require("../models/Muscles");
-const { formatExercises } = require("../utils/index");
+const {
+  Muscles,
+  Users,
+  CompletedWorkout,
+  Exercise,
+  Workout
+} = require("../models/index");
+
+const { formatExercises, formatWorkouts } = require("../utils/index");
 
 const seedDB = ({ muscles, users, exercises, workouts }) =>
   mongoose.connection
@@ -23,6 +20,20 @@ const seedDB = ({ muscles, users, exercises, workouts }) =>
       const formattedExercises = formatExercises(exercises, userDocs);
       const insertedExercises = Exercise.insertMany(formattedExercises);
       return Promise.all([insertedExercises, userDocs, muscleDocs]);
+    })
+    .then(([exerciseDocs, userDocs, muscleDocs]) => {
+      const formattedWorkouts = formatWorkouts(
+        workouts,
+        exerciseDocs,
+        userDocs
+      );
+      const insertedWorkouts = Workout.insertMany(formattedWorkouts);
+      return Promise.all([
+        insertedWorkouts,
+        exerciseDocs,
+        userDocs,
+        muscleDocs
+      ]);
     });
 
 module.exports = { seedDB };
