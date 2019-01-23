@@ -26,3 +26,20 @@ exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => {
     };
   });
 };
+
+exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs, userDocs) => {
+  return completedWorkouts.map(completedWorkout => {
+    const findWorkoutId = workoutDocs.find(workout => {
+      return workout.name === completedWorkout.workout;
+    })._id;
+    const findUserId = userDocs.find(user => {
+      return user.user_name === completedWorkout.user;
+    })._id;
+
+    return {
+      ...completedWorkout,
+      workout: findWorkoutId,
+      user: findUserId
+    };
+  });
+};
