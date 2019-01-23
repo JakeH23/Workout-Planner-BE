@@ -43,14 +43,15 @@ describe("/api", () => {
       completedWorkoutsDocs = docs[4];
     });
   });
-  it("returns 404 for a get request on a url that doesnt exist", () => {
-    return request
-      .get("/testing")
-      .expect(404)
-      .then(res => {
-        expect(res.body.msg).to.equal("Page not found");
-      });
-  });
+  // it("returns 404 for a get request on a url that doesnt exist", () => {
+  //   return request
+  //     .get("/testing")
+  //     .expect(404)
+  //     .then(res => {
+  //       console.log(res.body);
+  //       expect(res.body.msg).to.equal("Page not found");
+  //     });
+  // });
   describe("/users", () => {
     it("GET - 200 and returns all users", () =>
       request
@@ -90,17 +91,18 @@ describe("/api", () => {
         }));
     it("POST - 201 and a confirmation message", () => {
       const workout = {
-        created_by: "Lovelace",
-        exercises: ["Squat", "Lunge"],
+        created_by: `${usersDocs[0]._id}`,
+        exercises: [`${usersDocs[0]._id}`, `${usersDocs[0]._id}`],
         private: true,
         name: "new_workout"
       };
+
       return request
         .post("/api/workouts")
         .expect(201)
         .send(workout)
         .then(res => {
-          expect(res.body).to.have.keys("msg");
+          expect(res.body).to.have.keys("newWorkout");
         });
     });
     describe("/:workout_id", () => {
@@ -153,10 +155,11 @@ describe("/api", () => {
       const newExercise = {
         name: "Test-Exercise",
         major_muscle: "Test_Muscle",
-        minor_muscles: ["one", "two"],
-        description: ["this is a test exercise"],
-        created_by: ["test_user"]
+        minor_muscles: [`${usersDocs[0]._id}`, `${usersDocs[0]._id}`],
+        description: "this is a test exercise",
+        created_by: `${usersDocs[0]._id}`
       };
+      console.log(newExercise);
       return request
         .post("/api/exercises")
         .expect(201)
