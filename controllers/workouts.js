@@ -1,3 +1,4 @@
+const ObjectId = require('mongodb').ObjectID;
 const Workouts = require('../models/Workout');
 
 
@@ -23,7 +24,9 @@ exports.getSingleWorkout = (req, res, next) => {
 exports.postNewWorkout = (req, res, next) => {
   Workouts.create({
     name: req.body.name,
-    exercises: req.body.exercises,
+    exercises: req.body.exercises.map(exercise => {
+      ObjectId(exercise);
+    }),
     private: req.body.private,
     created_by: req.body.created_by,
   })

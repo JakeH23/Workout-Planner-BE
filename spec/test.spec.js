@@ -29,17 +29,17 @@ describe('/api', () => {
     });
   });
   describe('/workouts', () => {
-    it.only('GET - 200 & gets all workouts', () => request.get('/api/workouts')
+    it('GET - 200 & gets all workouts', () => request.get('/api/workouts')
       .expect(200)
       .then((res) => {
-        expect(res.body).to.have.length(3);
+        expect(res.body.workouts).to.have.length(4);
       }));
-    it('POST - 201 and a confirmation message', () => {
+    it.only('POST - 201 and a confirmation message', () => {
       const workout = {
         created_by: 'Lovelace',
         exercises: ['Squat', 'Lunge'],
         private: true,
-        workout_name: 'new_workout',
+        name: 'new_workout',
       };
       return request.post('/api/workouts')
         .expect(201)
