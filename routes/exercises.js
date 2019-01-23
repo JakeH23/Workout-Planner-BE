@@ -7,7 +7,7 @@ exerciseRouter.route('/')
   .post(postNewExercise);
 
 
-exerciseRouter.route('/:exercise_name')
+exerciseRouter.route('/:title')
   .get(getSingleExercise);
 
 exerciseRouter.route('/muscle/:major_muscle')
