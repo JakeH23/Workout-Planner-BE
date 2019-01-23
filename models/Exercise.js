@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const ExerciseSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: true
   },
@@ -20,7 +20,7 @@ const ExerciseSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  description: {
+  content: {
     type: String,
     required: true
   },
