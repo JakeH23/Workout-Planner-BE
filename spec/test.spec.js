@@ -34,10 +34,10 @@ describe('/api', () => {
       .then((res) => {
         expect(res.body.workouts).to.have.length(4);
       }));
-    it.only('POST - 201 and a confirmation message', () => {
+    it('POST - 201 and a confirmation message', () => {
       const workout = {
-        created_by: 'Lovelace',
-        exercises: ['Squat', 'Lunge'],
+        created_by: '5c487666fc46aa47c16ad913',
+        exercises: ['5c487666fc46aa47c16ad916', '5c487666fc46aa47c16ad917'],
         private: true,
         name: 'new_workout',
       };
@@ -45,7 +45,8 @@ describe('/api', () => {
         .expect(201)
         .send(workout)
         .then((res) => {
-          expect(res.body).to.have.keys('msg');
+          expect(res.body.newWorkout).to.have.property('name');
+          expect(res.body.newWorkout).to.have.property('created_at');
         });
     });
     describe('/:workout_id', () => {

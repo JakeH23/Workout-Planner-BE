@@ -10,7 +10,7 @@ const WorkoutSchema = new Schema({
   exercises: [{ type: mongoose.Schema.Types.ObjectId, ref: "exercises" }],
   created_at: {
     type: Date,
-    default: Date.now
+    default: Date.now()
   },
   private: {
     type: Boolean,
@@ -19,7 +19,7 @@ const WorkoutSchema = new Schema({
   created_by: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
-    required: true
+    required: true,
   }
 });
 

@@ -1,5 +1,8 @@
-const ObjectId = require('mongodb').ObjectID;
+const mongoose = require('mongoose');
+const ObjectId = require('mongodb');
 const Workouts = require('../models/Workout');
+const Users = require('../models/Users');
+const Exercises = require('../models/Exercise');
 
 
 exports.getAllWorkouts = (req, res, next) => {
@@ -24,9 +27,7 @@ exports.getSingleWorkout = (req, res, next) => {
 exports.postNewWorkout = (req, res, next) => {
   Workouts.create({
     name: req.body.name,
-    exercises: req.body.exercises.map(exercise => {
-      ObjectId(exercise);
-    }),
+    exercises: req.body.exercises,
     private: req.body.private,
     created_by: req.body.created_by,
   })
@@ -34,7 +35,7 @@ exports.postNewWorkout = (req, res, next) => {
       res.status(201).send({ newWorkout });
     })
     .catch(next);
-}
+};
 
 
 exports.deleteWorkout = (req, res, next) => {
