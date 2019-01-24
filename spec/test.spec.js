@@ -45,7 +45,7 @@ describe('/api', () => {
     .get('/testing')
     .expect(404)
     .then((res) => {
-      expect(res.body.msg).to.equal('Page not found');
+      expect(res.body.msg).to.equal('Page Not Found');
     }));
   describe('/users', () => {
     it('GET - 200 and returns all users', () => request
@@ -63,6 +63,12 @@ describe('/api', () => {
           expect(res.body.user).to.have.property('user_name', 'charlie');
           expect(res.body.user.user_name).to.equal('charlie');
         }));
+      it('returns 404 for a get request on wrong user', () => request
+        .get('/api/users/wronguser')
+        .expect(404)
+        .then((res) => {
+          expect(res.body.msg).to.equal('User not found');
+        }));
       it(' POST - 201 & returns created user', () => {
         const newUser = {
           user_name: 'test user',
@@ -73,6 +79,18 @@ describe('/api', () => {
           .expect(201)
           .then((res) => {
             expect(res.body.user.user_name).to.equal('test user');
+          });
+      });
+      it(' POST - 400 for an incomplete request', () => {
+        const newUser = {
+          user_name: '',
+          password: 'test_password',
+        };
+        return request.post('/api/users')
+          .send(newUser)
+          .expect(400)
+          .then((res) => {
+            expect(res.body.msg).to.equal('Bad request');
           });
       });
       it('DELETE - 204 & successful deletion', () => request.delete('/api/users/charlie')
@@ -112,6 +130,21 @@ describe('/api', () => {
           expect(res.body).to.have.keys('newWorkout');
         });
     });
+    it('POST - 400 for an incomplete request', () => {
+      const workout = {
+        created_by: ``,
+        exercises: [``, ``],
+        private: true,
+        name: 'new_workout',
+      };
+      return request
+        .post('/api/workouts')
+        .expect(400)
+        .send(workout)
+        .then((res) => {
+          expect(res.body.msg).to.equal('Bad request');
+        });
+    })
     describe('/:workout_id', () => {
       it('GET - 200 & returns specified workout when provided with workout name', () => request
         .get('/api/workouts/workout%201')
@@ -140,7 +173,7 @@ describe('/api', () => {
         .get('/api/muscles/Chest')
         .expect(200)
         .then((res) => {
-          expect(res.body.muscle_name).to.equal('Chest');
+          expect(res.body.muscle[0].muscle_name).to.equal('Chest');
         }));
     });
   });
