@@ -12,11 +12,14 @@ const CompletedWorkoutSchema = new Schema({
     ref: 'workouts',
     required: true,
   },
-  user: {
+  user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
     required: true,
   },
+  user_name: {
+    type: String,
+  }
 });
 
 module.exports = mongoose.model('completed_workouts', CompletedWorkoutSchema);
