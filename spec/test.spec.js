@@ -89,12 +89,12 @@ describe('/api', () => {
           }));
       });
       describe('/completed_workouts', () => {
-        it.only('GET - 200 and all user completed workouts', () => {
+        it('GET - 200 and all user completed workouts', () => {
           return request.get('/api/users/charlie/completed_workouts')
           .expect(200)
           .then((res) => {
-            expect(res.body).to.have.key('workout');
-            expect(res.body.workouts).to.have.length(1);
+            expect(res.body.userCompleted[0]).to.have.property('workout');
+            expect(res.body.userCompleted).to.have.length(1);
           })
         });
       });
