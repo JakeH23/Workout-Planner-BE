@@ -43,15 +43,14 @@ describe("/api", () => {
       completedWorkoutsDocs = docs[4];
     });
   });
-  // it("returns 404 for a get request on a url that doesnt exist", () => {
-  //   return request
-  //     .get("/testing")
-  //     .expect(404)
-  //     .then(res => {
-  //       console.log(res.body);
-  //       expect(res.body.msg).to.equal("Page not found");
-  //     });
-  // });
+  it("returns 404 for a get request on a url that doesnt exist", () => {
+    return request
+      .get("/testing")
+      .expect(404)
+      .then(res => {
+        expect(res.body.msg).to.equal("Page not found");
+      });
+  });
   describe("/users", () => {
     it("GET - 200 and returns all users", () =>
       request
@@ -154,12 +153,11 @@ describe("/api", () => {
     it("POST - 201 and successfully adds an exercise to the database", () => {
       const newExercise = {
         name: "Test-Exercise",
-        major_muscle: "Test_Muscle",
+        major_muscle: `${usersDocs[0]._id}`,
         minor_muscles: [`${usersDocs[0]._id}`, `${usersDocs[0]._id}`],
         description: "this is a test exercise",
         created_by: `${usersDocs[0]._id}`
       };
-      console.log(newExercise);
       return request
         .post("/api/exercises")
         .expect(201)
@@ -168,17 +166,10 @@ describe("/api", () => {
           expect(res.body.msg).to.equal("Exercise Added");
         });
     });
-    describe('/:exercise_id', () => {
-      it(' GET - 200 & returns the exercise when provided with the correct id', () => request.get('/api/exercises/Pull%20Up')
-        .expect(200)
-        .then((res) => {
-          expect(res.body.exercise).to.have.property('content');
-          expect(res.body.exercise.title).to.equal('Pull Up');
-        }));
-    }); 
-    describe('/muscle/:major_muscle', () => {
-      it('GET - 200 and returns the exercises of the major muscle group', () => {
-        return request.get('/api/exercises/muscle/Chest')
+    describe("/exercises/:exercise_id", () => {
+      it(" GET - 200 & returns the exercise when provided with the correct id", () =>
+        request
+          .get("/api/exercises/pull-up")
           .expect(200)
           .then(res => {
             expect(res.body.exerciseData).to.have.property("exercise_name");
