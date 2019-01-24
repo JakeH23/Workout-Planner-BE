@@ -22,4 +22,14 @@ exports.getSingleUser = (req, res, next) => {
     .catch(next);
 };
 
-exports.getWorkoutByUserId = (req, res, next) => {};
+exports.getWorkoutByUserId = (req, res, next) => {
+  Users.find({ user_name: req.params.username })
+    .then(user => {
+      if (!user.length)
+        return Promise.reject({ status: 404, msg: "user not found" });
+      [user] = user;
+
+      res.send({ saved_workouts: user.saved_workouts });
+    })
+    .catch(next);
+};
