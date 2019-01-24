@@ -19,10 +19,10 @@ app.use(cors());
 
 app.use('/api', apiRouter);
 
-app.use('/*', (req, res, next) => {
-  next({ status: 404 });
-});
 
+app.use('/*', (req, res, next) => {
+  next({ msg: "Page Not Found", status: 404 });
+});
 app.use(handle400s);
 app.use(handle404s);
 app.use(handle500s);
