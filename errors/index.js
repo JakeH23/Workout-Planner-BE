@@ -3,7 +3,7 @@ exports.handle400s = (err, req, res, next) => {
     err.status === 400
     || err.name === 'CastError'
     || err.name === 'ValidationError'
-  ) console.log(err), res.status(400).send({ msg: 'Bad request' });
+  ) res.status(400).send({ msg: 'Bad request' });
   else next(err);
 };
 
