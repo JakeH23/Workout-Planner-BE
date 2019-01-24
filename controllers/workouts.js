@@ -42,7 +42,7 @@ exports.deleteWorkout = (req, res, next) => {
   Workouts.deleteOne({ name: req.params.workout_name })
     .then(
       () =>
-        console.log(res) || res.status(204).send({ msg: "Successful deletion" })
+      res.status(204).send({ msg: "Successful deletion" })
     )
     .catch(next);
 };
