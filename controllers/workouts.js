@@ -16,7 +16,7 @@ exports.getAllWorkouts = (req, res, next) => {
 exports.getSingleWorkout = (req, res, next) => {
   Workouts.find({ name: req.params.workout_name })
     .then((workout) => {
-      if (!workout) return Promise.reject({ status: 404, msg: 'Workout not found' });
+      if (!workout.length) return Promise.reject({ status: 404, msg: 'Workout not found' });
       [workout] = workout;
       res.status(200).send({ workout });
     })

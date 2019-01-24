@@ -35,17 +35,18 @@ describe('/api', () => {
     completedWorkouts,
   }).then((docs) => {
     console.log('seeded fresh database');
-    musclesDocs = docs[0];
-    usersDocs = docs[1];
+    completedWorkoutsDocs = docs[0];
+    workoutsDocs = docs[1];
     exercisesDocs = docs[2];
-    workoutsDocs = docs[3];
-    completedWorkoutsDocs = docs[4];
+    usersDocs = docs[3];
+    musclesDocs = docs[4]
+
   }));
   it('returns 404 for a get request on a url that doesnt exist', () => request
     .get('/testing')
     .expect(404)
     .then((res) => {
-      expect(res.body.msg).to.equal('Page not found');
+      expect(res.body.msg).to.equal('Page Not Found');
     }));
   describe('/users', () => {
     it('GET - 200 and returns all users', () => request
@@ -57,11 +58,17 @@ describe('/api', () => {
       }));
     describe('/:username', () => {
       it('GET - 200 & returns specified user when provided with username', () => request
-        .get('/api/users/charlie')
+        .get(`/api/users/${completedWorkoutsDocs[0].user_name}`)
         .expect(200)
         .then((res) => {
           expect(res.body.user).to.have.property('user_name', 'charlie');
           expect(res.body.user.user_name).to.equal('charlie');
+        }));
+      it('returns 404 for a get request on wrong user', () => request
+        .get('/api/users/wronguser')
+        .expect(404)
+        .then((res) => {
+          expect(res.body.msg).to.equal('User not found');
         }));
       it(' POST - 201 & returns created user', () => {
         const newUser = {
@@ -73,6 +80,18 @@ describe('/api', () => {
           .expect(201)
           .then((res) => {
             expect(res.body.user.user_name).to.equal('test user');
+          });
+      });
+      it(' POST - 400 for an incomplete request', () => {
+        const newUser = {
+          user_name: '',
+          password: 'test_password',
+        };
+        return request.post('/api/users')
+          .send(newUser)
+          .expect(400)
+          .then((res) => {
+            expect(res.body.msg).to.equal('Bad request');
           });
       });
       it('DELETE - 204 & successful deletion', () => request.delete('/api/users/charlie')
@@ -91,11 +110,11 @@ describe('/api', () => {
       describe('/completed_workouts', () => {
         it('GET - 200 and all user completed workouts', () => {
           return request.get('/api/users/charlie/completed_workouts')
-          .expect(200)
-          .then((res) => {
-            expect(res.body.userCompleted[0]).to.have.property('workout');
-            expect(res.body.userCompleted).to.have.length(1);
-          })
+            .expect(200)
+            .then((res) => {
+              expect(res.body.userCompleted[0]).to.have.property('workout');
+              expect(res.body.userCompleted).to.have.length(1);
+            })
         });
       });
     });
@@ -122,16 +141,37 @@ describe('/api', () => {
           expect(res.body).to.have.keys('newWorkout');
         });
     });
+    it('POST - 400 for an incomplete request', () => {
+      const workout = {
+        created_by: ``,
+        exercises: [``, ``],
+        private: true,
+        name: 'new_workout',
+      };
+      return request
+        .post('/api/workouts')
+        .expect(400)
+        .send(workout)
+        .then((res) => {
+          expect(res.body.msg).to.equal('Bad request');
+        });
+    })
     describe('/:workout_id', () => {
       it('GET - 200 & returns specified workout when provided with workout name', () => request
-        .get('/api/workouts/workout%201')
+        .get(`/api/workouts/${workoutsDocs[0].name}`)
         .expect(200)
         .then((res) => {
           expect(res.body.workout).to.have.property('created_by');
           expect(res.body.workout.name).to.equal('workout 1');
         }));
+      it('returns 404 for workout that doesnt exist', () => request
+        .get('/api/workouts/workout%201111')
+        .expect(404)
+        .then((res) => {
+          expect(res.body.msg).to.equal('Workout not found');
+        }));
       it('DELETE 204 and responds with a delete successful message', () => request
-        .delete('/api/workouts/workout%201')
+        .delete(`/api/workouts/${workoutsDocs[0].name}`)
         .expect(204)
         .then((res) => {
           expect(res.status).to.equal(204);
@@ -147,10 +187,10 @@ describe('/api', () => {
       }));
     describe('/:muscle', () => {
       it('GET - 200 & returns the muscle name and description', () => request
-        .get('/api/muscles/Chest')
+        .get(`/api/muscles/${musclesDocs[0].muscle_name}`)
         .expect(200)
         .then((res) => {
-          expect(res.body.muscle_name).to.equal('Chest');
+          expect(res.body.muscle[0].muscle_name).to.equal('Chest');
         }));
     });
   });
@@ -180,14 +220,14 @@ describe('/api', () => {
     });
     describe('/exercises/:title', () => {
       it(' GET - 200 & returns the exercise when provided with the correct title', () => request
-        .get('/api/exercises/Pull%20Up')
+        .get(`/api/exercises/${exercisesDocs[0].title}`)
         .expect(200)
         .then((res) => {
           expect(res.body.exercise).to.have.property('title');
-          expect(res.body.exercise.title).to.equal('Pull Up');
+          expect(res.body.exercise.title).to.equal(`${exercisesDocs[0].title}`);
         }));
       it('DELETE - 204 and successful deletion', () => request
-        .delete('/api/exercises/Pull%20Up')
+        .delete(`/api/exercises/${exercisesDocs[0].title}`)
         .expect(204)
         .then((res) => {
           expect(res.status).to.equal(204);
