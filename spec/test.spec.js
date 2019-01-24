@@ -95,7 +95,6 @@ describe("/api", () => {
         name: "new_workout"
       };
 
-<<<<<<< HEAD
       return request
         .post("/api/workouts")
         .expect(201)
@@ -119,29 +118,6 @@ describe("/api", () => {
           .expect(204)
           .then(res => {
             expect(res.body.msg).to.equal("successful deletion");
-=======
-        return request
-          .post('/api/workouts')
-          .expect(201)
-          .send(workout)
-          .then((res) => {
-            expect(res.body).to.have.keys('newWorkout');
-          });
-      });
-      describe('/:workout_id', () => {
-        it('GET - 200 & returns specified workout when provided with workout name', () => request
-          .get('/api/workouts/workout%201')
-          .expect(200)
-          .then((res) => {
-          expect(res.body.workout).to.have.property('created_by');
-          expect(res.body.workout.name).to.equal('workout 1');
-        }));
-        it.skip('DELETE 204 and responds with a delete successful message', () => request
-          .delete('/api/workouts/workout%201')
-          .expect(204)
-          .then((res) => {
-           expect(res.body.msg).to.equal('successful deletion');
->>>>>>> 8e9da89025b0a7e825951cbbecde9b43ecd3b24d
           }));
     });
   });
@@ -168,17 +144,16 @@ describe("/api", () => {
       request
         .get("/api/exercises")
         .expect(200)
-<<<<<<< HEAD
         .then(res => {
-          expect(res.body).to.have.length(10);
+          expect(res.body.exercises).to.have.length(10);
           expect(res.body.exercises[0]).to.have.property("major_muscle");
         }));
     it("POST - 201 and successfully adds an exercise to the database", () => {
       const newExercise = {
-        name: "Test-Exercise",
+        title: "Test-Exercise",
         major_muscle: `${usersDocs[0]._id}`,
         minor_muscles: [`${usersDocs[0]._id}`, `${usersDocs[0]._id}`],
-        description: "this is a test exercise",
+        content: "this is a test exercise",
         created_by: `${usersDocs[0]._id}`
       };
       return request
@@ -186,38 +161,13 @@ describe("/api", () => {
         .expect(201)
         .send(newExercise)
         .then(res => {
-          expect(res.body.msg).to.equal("Exercise Added");
+          expect(res.body.exercise.content).to.equal("this is a test exercise");
         });
     });
     describe("/exercises/:title", () => {
       it(" GET - 200 & returns the exercise when provided with the correct title", () =>
         request
           .get("/api/exercises/Pull%20Up")
-=======
-        .then((res) => {
-          expect(res.body.exercises).to.have.length(10);
-          expect(res.body.exercises[0]).to.have.property('major_muscle');
-        }));
-      it('POST - 201 and successfully adds an exercise to the database', () => {
-        const newExercise = {
-          title: 'Test-Exercise',
-          major_muscle: `${usersDocs[0]._id}`,
-          minor_muscles: [`${usersDocs[0]._id}`, `${usersDocs[0]._id}`],
-          content: 'this is a test exercise',
-          created_by: `${usersDocs[0]._id}`,
-        };
-        return request
-          .post('/api/exercises')
-          .expect(201)
-          .send(newExercise)
-          .then((res) => {
-            expect(res.body.exercise.content).to.equal('this is a test exercise');
-          });
-      });
-      describe('/exercises/:title', () => {
-        it(' GET - 200 & returns the exercise when provided with the correct title', () => request
-          .get('/api/exercises/Pull%20Up')
->>>>>>> 8e9da89025b0a7e825951cbbecde9b43ecd3b24d
           .expect(200)
           .then(res => {
             expect(res.body.exercise).to.have.property("title");

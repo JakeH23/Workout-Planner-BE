@@ -1,9 +1,13 @@
 exports.formatExercises = (exercises, userDocs) => exercises.map((exercise) => {
+  const userName = userDocs.find(user => user.user_name === exercise.created_by).user_name
   const findId = userDocs.find(user => user.user_name === exercise.created_by)._id;
+
 
   return {
     ...exercise,
     created_by: findId,
+    user_name: userName
+
   };
 });
 

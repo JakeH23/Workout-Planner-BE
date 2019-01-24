@@ -47,10 +47,14 @@ exports.getExerciseByMajorMuscle = (req, res, next) => {
 };
 
 exports.getExerciseByUserId = (req, res, next) => {
-  Exercise.find({ created_by: req.params.created_by })
+  Exercise.find()
     .then((exercises) => {
+      const usersExercises = exercises.map(exercise => {
+        if (exercise.user_name === req.params.created_by)
+          return exercise
+      })
       if (!exercises.length) return Promise.reject({ status: 404, msg: 'This user has no exercises' });
-      res.status(200).send({ exercises });
+      res.status(200).send({ usersExercises });
     })
     .catch(next);
 };

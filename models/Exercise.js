@@ -29,6 +29,9 @@ const ExerciseSchema = new Schema({
     ref: 'users',
     required: true,
   },
+  user_name: {
+    type: String
+  }
 });
 
 module.exports = mongoose.model('exercises', ExerciseSchema);
