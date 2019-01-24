@@ -1,5 +1,5 @@
 const CompletedWorkouts = require('../models/CompletedWorkout');
-const Workouts = require('../models/Workout');
+const { findWorkout } = require('../utils');
 
 exports.getUserCompletedWorkouts = (req, res, next) => {
   CompletedWorkouts.find()
@@ -16,7 +16,7 @@ exports.getUserCompletedWorkouts = (req, res, next) => {
 };
 
 exports.addCompletedWorkout = async (req, res, next) => {
-  const completedWorkout = await findCompletedWorkout(req.params.workout_name)
+  const completedWorkout = await findWorkout(req.params.workout_name)
   const { _id, created_by, user_name } = completedWorkout[0]
   const newCompletedWorkout = {
     workout: _id,
@@ -28,11 +28,3 @@ exports.addCompletedWorkout = async (req, res, next) => {
     .catch((next));
 };
 
-
-const findCompletedWorkout = async (workoutName) => {
-  const newWorkout = await Workouts.find({ name: workoutName }).then(workout => (workout))
-
-  return newWorkout;
-
-
-}

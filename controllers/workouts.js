@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
-const ObjectId = require('mongodb');
 const Workouts = require('../models/Workout');
-const Users = require('../models/Users');
-const Exercises = require('../models/Exercise');
+// const { findWorkout } = require('../utils');
+// const Users = require('../models/Users');
+
 
 exports.getAllWorkouts = (req, res, next) => {
   Workouts.find()
@@ -12,6 +11,15 @@ exports.getAllWorkouts = (req, res, next) => {
     })
     .catch(next);
 };
+
+// exports.addWorkoutToSavedWorkouts = async (req, res, next) => {
+//   const selectedWorkout = await findWorkout(req.params.workout_name);
+//   console.log(selectedWorkout)
+//   Users.saved_workouts.create(selectedWorkout).then(workout => res.status(201)
+//     .send({ workout }))
+//     .catch(next);
+
+// }
 
 exports.getSingleWorkout = (req, res, next) => {
   Workouts.find({ name: req.params.workout_name })

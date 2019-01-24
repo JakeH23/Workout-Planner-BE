@@ -1,3 +1,6 @@
+const Workouts = require('../models/Workout');
+
+
 exports.formatExercises = (exercises, userDocs) => exercises.map((exercise) => {
   const userName = userDocs.find(user => user.user_name === exercise.created_by).user_name;
   const findId = userDocs.find(user => user.user_name === exercise.created_by)._id;
@@ -36,3 +39,10 @@ exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs, userDocs) => c
     user_name: findUserName,
   };
 });
+
+
+exports.findWorkout = async (workoutName) => {
+  const newWorkout = await Workouts.find({ name: workoutName }).then(workout => (workout));
+
+  return newWorkout;
+};

@@ -4,6 +4,7 @@ const {
   getSingleWorkout,
   postNewWorkout,
   deleteWorkout,
+  addWorkoutToSavedWorkouts,
 } = require('../controllers/workouts');
 const { addCompletedWorkout } = require('../controllers/completedworkouts');
 
@@ -17,5 +18,7 @@ workoutRouter.route('/:workout_name')
   .post(addCompletedWorkout)
   .delete(deleteWorkout);
 
+// workoutRouter.route('/:workout_name/save')
+//   .post(addWorkoutToSavedWorkouts);
 
 module.exports = workoutRouter;
