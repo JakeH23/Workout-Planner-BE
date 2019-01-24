@@ -4,7 +4,7 @@ const Users = require('../models/Users');
 exports.getAllExercises = (req, res, next) => {
   Exercise.find()
     .then((exercises) => {
-      if (!exercises.length) return Promise.reject({ status: 404, msg: 'exercise not found' });
+      if (!exercises.length) return Promise.reject({ status: 404, msg: 'Exercise not found' });
       res.send({ exercises });
     })
     .catch(next);
@@ -13,8 +13,8 @@ exports.getAllExercises = (req, res, next) => {
 exports.getSingleExercise = (req, res, next) => {
   Exercise.find({ title: req.params.title })
     .then((exercise) => {
-      if (!exercise.length) return Promise.reject({ status: 404, msg: 'exercise not found' });
-      else[exercise] = exercise;
+      if (!exercise.length) return Promise.reject({ status: 404, msg: 'Exercise not found' });
+      [exercise] = exercise;
       res.send({ exercise });
     })
     .catch(next)
@@ -33,7 +33,7 @@ exports.postNewExercise = (req, res, next) => {
     .then(exercise => res.status(201).send({ exercise }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next({ status: 400, msg: 'bad post request' });
+        next({ status: 400, msg: 'Bad Post Request' });
       }
     });
 };
