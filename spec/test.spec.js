@@ -97,18 +97,18 @@ describe('/api', () => {
           });
       });
       describe('/:workout_id', () => {
-        it.only('GET - 200 & returns specified workout when provided with workout name', () => request
+        it('GET - 200 & returns specified workout when provided with workout name', () => request
           .get('/api/workouts/workout%201')
           .expect(200)
           .then((res) => {
           expect(res.body.workout).to.have.property('created_by');
           expect(res.body.workout.name).to.equal('workout 1');
         }));
-        it('DELETE 204 and responds with a delete successful message', () => request
-          .delete('/api/workouts/new_workout')
+        it.skip('DELETE 204 and responds with a delete successful message', () => request
+          .delete('/api/workouts/workout%201')
           .expect(204)
           .then((res) => {
-            expect(res.body.msg).to.equal('successful deletion');
+           expect(res.body.msg).to.equal('successful deletion');
           }));
       });
     });
@@ -133,15 +133,15 @@ describe('/api', () => {
         .get('/api/exercises')
         .expect(200)
         .then((res) => {
-          expect(res.body).to.have.length(10);
+          expect(res.body.exercises).to.have.length(10);
           expect(res.body.exercises[0]).to.have.property('major_muscle');
         }));
       it('POST - 201 and successfully adds an exercise to the database', () => {
         const newExercise = {
-          name: 'Test-Exercise',
+          title: 'Test-Exercise',
           major_muscle: `${usersDocs[0]._id}`,
           minor_muscles: [`${usersDocs[0]._id}`, `${usersDocs[0]._id}`],
-          description: 'this is a test exercise',
+          content: 'this is a test exercise',
           created_by: `${usersDocs[0]._id}`,
         };
         return request
@@ -149,7 +149,7 @@ describe('/api', () => {
           .expect(201)
           .send(newExercise)
           .then((res) => {
-            expect(res.body.msg).to.equal('Exercise Added');
+            expect(res.body.exercise.content).to.equal('this is a test exercise');
           });
       });
       describe('/exercises/:title', () => {
