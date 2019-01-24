@@ -14,7 +14,7 @@ exports.getSingleExercise = (req, res, next) => {
   Exercise.find({ title: req.params.title })
     .then((exercise) => {
       if (!exercise.length) return Promise.reject({ status: 404, msg: 'exercise not found' });
-      [exercise ] = exercise;
+      [exercise] = exercise;
       res.send({ exercise });
     })
     .catch(next);
@@ -40,8 +40,17 @@ exports.postNewExercise = (req, res, next) => {
 exports.getExerciseByMajorMuscle = (req, res, next) => {
   Exercise.find({ major_muscle: req.params.major_muscle })
     .then((exercises) => {
-      if (!exercises.length) return Promise.reject({status: 404, msg: 'This muscle has no exercises'})
+      if (!exercises.length) return Promise.reject({ status: 404, msg: 'This muscle has no exercises' });
       res.status(200).send({ exercises });
     })
     .catch(next);
+};
+
+exports.getExerciseByUserId = (req, res, next) => {
+  Exercise.find({ created_by: req.params.created_by })
+  .then((exercises) => {
+    if (!exercises.length) return Promise.reject({ status: 404, msg: 'This user has no exercises'});
+    res.status(200).send({ exercises });
+  })
+  .catch(next);
 }
