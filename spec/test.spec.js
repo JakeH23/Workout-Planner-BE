@@ -99,12 +99,22 @@ describe('/api', () => {
           expect(res.status).to.equal(204);
         }));
       describe('/workouts', () => {
-        it('gets all workouts of the username', () => request
+        it('GET - 200 & gets all workouts of the username', () => request
           .get('/api/users/charlie/workouts')
           .expect(200)
           .then((res) => {
             expect(res.body).to.have.key('saved_workouts');
           }));
+      });
+      describe('/completed_workouts', () => {
+        it('GET - 200 and all user completed workouts', () => {
+          return request.get('/api/users/charlie/completed_workouts')
+          .expect(200)
+          .then((res) => {
+            expect(res.body.userCompleted[0]).to.have.property('workout');
+            expect(res.body.userCompleted).to.have.length(1);
+          })
+        });
       });
     });
   });

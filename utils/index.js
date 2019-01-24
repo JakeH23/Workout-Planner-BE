@@ -2,8 +2,6 @@ exports.formatExercises = (exercises, userDocs) => exercises.map((exercise) => {
   const userName = userDocs.find(user => user.user_name === exercise.created_by).user_name;
   const findId = userDocs.find(user => user.user_name === exercise.created_by)._id;
 
-
-
   return {
     ...exercise,
     created_by: findId,
@@ -25,10 +23,13 @@ exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((wor
 exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs, userDocs) => completedWorkouts.map((completedWorkout) => {
   const findWorkoutId = workoutDocs.find(workout => workout.name === completedWorkout.workout)._id;
   const findUserId = userDocs.find(user => user.user_name === completedWorkout.user)._id;
+  const findUserName = userDocs.find(user => user.user_name === completedWorkout.user).user_name;
 
+  
   return {
     ...completedWorkout,
     workout: findWorkoutId,
-    user: findUserId,
+    user_id: findUserId,
+    user_name: findUserName,
   };
 });
