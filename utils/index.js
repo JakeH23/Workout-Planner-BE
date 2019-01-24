@@ -13,9 +13,12 @@ exports.formatExercises = (exercises, userDocs) => exercises.map((exercise) => {
 exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((workout) => {
   const findExerciseId = exerciseDocs.find(exercise => workout.exercises.find(ex => ex === exercise.title))._id;
   const findUserId = userDocs.find(user => user.user_name === workout.created_by)._id;
+  const findUserName = userDocs.find(user => user.user_name === workout.created_by).user_name;
+  
   return {
     ...workout,
     created_by: findUserId,
+    user_name: findUserName,
     exercises: findExerciseId,
   };
 });
