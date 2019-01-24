@@ -27,7 +27,6 @@ describe('/api', () => {
   let exercisesDocs;
   let workoutDocs;
   let completedWorkoutsDocs;
-<<<<<<< HEAD
   beforeEach(() => seedDB({
     muscles,
     users,
@@ -59,37 +58,6 @@ describe('/api', () => {
     describe('/:username', () => {
       it('GET - 200 & returns specified user when provided with username', () => request
         .get('/api/users/charlie')
-=======
-  beforeEach(() => {
-    return seedDB({
-      muscles,
-      users,
-      exercises,
-      workouts,
-      completedWorkouts
-    }).then(docs => {
-      console.log("seeded fresh database");
-      musclesDocs = docs[0];
-      usersDocs = docs[1];
-      exercisesDocs = docs[2];
-      workoutsDocs = docs[3];
-      completedWorkoutsDocs = docs[4];
-    });
-  });
-  // it("returns 404 for a get request on a url that doesnt exist", () => {
-  //   return request
-  //     .get("/testing")
-  //     .expect(404)
-  //     .then(res => {
-  //       console.log(res.body);
-  //       expect(res.body.msg).to.equal("Page not found");
-  //     });
-  // });
-  describe("/users", () => {
-    it("GET - 200 and returns all users", () =>
-      request
-        .get("/api/users")
->>>>>>> 42a277bd5de482a1936260ecb5a9eb0705b54b3e
         .expect(200)
         .then((res) => {
           expect(res.body.user).to.have.property('user_name', 'charlie');
@@ -114,13 +82,8 @@ describe('/api', () => {
       }));
     it('POST - 201 and a confirmation message', () => {
       const workout = {
-<<<<<<< HEAD
-        created_by: 'Lovelace',
-        exercises: ['Squat', 'Lunge'],
-=======
         created_by: `${usersDocs[0]._id}`,
         exercises: [`${usersDocs[0]._id}`, `${usersDocs[0]._id}`],
->>>>>>> 42a277bd5de482a1936260ecb5a9eb0705b54b3e
         private: true,
         name: 'new_workout',
       };
@@ -129,13 +92,8 @@ describe('/api', () => {
         .post('/api/workouts')
         .expect(201)
         .send(workout)
-<<<<<<< HEAD
-        .then((res) => {
-          expect(res.body).to.have.keys('msg');
-=======
         .then(res => {
           expect(res.body).to.have.keys("newWorkout");
->>>>>>> 42a277bd5de482a1936260ecb5a9eb0705b54b3e
         });
     });
     describe('/:workout_id', () => {
@@ -187,7 +145,6 @@ describe('/api', () => {
         description: "this is a test exercise",
         created_by: `${usersDocs[0]._id}`
       };
-      console.log(newExercise);
       return request
         .post('/api/exercises')
         .expect(201)

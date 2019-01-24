@@ -58,4 +58,4 @@ exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs, userDocs) =>
       workout: findWorkoutId,
       user: findUserId
     };
-  });
+  })});
