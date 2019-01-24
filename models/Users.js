@@ -7,6 +7,14 @@ const UsersSchema = new Schema({
     type: String,
     required: true,
   },
+  actual_name: {
+    forename: {
+      type: String,
+    },
+    surname: {
+      type: String,
+    },
+  },
   password: {
     type: String,
     required: true,

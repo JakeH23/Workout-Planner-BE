@@ -20,6 +20,16 @@ exports.getSingleUser = (req, res, next) => {
     .catch(next);
 };
 
+exports.postNewUser = (req, res, next) => {
+  const newUser = req.body;
+  Users.create(newUser)
+    .then((user) => {
+      res.status(201).send({ user });
+    })
+    .catch(next);
+};
+
+
 exports.deleteUser = (req, res, next) => {
   Users.find({user_name: req.params.username })
     .then(() => {
