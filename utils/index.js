@@ -4,34 +4,20 @@ exports.formatExercises = (exercises, userDocs) => {
       return user.user_name === exercise.created_by;
     })._id;
 
-  return {
-    ...exercise,
-    created_by: findId,
-  };
-});
-
-exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((workout) => {
-  const arr = [];
-  const findExerciseId = exerciseDocs.forEach((exercise) => {
-    const exId = new Promise((resolve, reject) => workout.exercises.find((ex) => {
-      if (ex === exercise.title) arr.push(exercise._id);
-      if (workout.exercises.length === arr.length) resolve(arr);
-    }));
-    return exId.then(val => val);
-    //   if (arr.length === workout.exercises.length) return arr;
+    return {
+      ...exercise,
+      created_by: findId
+    };
   });
 };
 
 exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => {
   return workouts.map(workout => {
-    const arr = [];
     const findExerciseId = exerciseDocs.find(exercise => {
-      workout.exercises.find(ex => {
-        if (ex === exercise.title) arr.push(exercise._id);
+      return workout.exercises.find(ex => {
+        return ex === exercise.title;
       });
-      if (arr.length === workout.exercises.length) return arr;
-    });
-
+    })._id;
     const findUserId = userDocs.find(user => {
       return user.user_name === workout.created_by;
     })._id;
