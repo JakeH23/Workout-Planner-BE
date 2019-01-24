@@ -64,7 +64,7 @@ describe('/api', () => {
             expect(res.body.user.user_name).to.equal('charlie');
           }));
         describe('/workouts', () => {
-          it('gets all workouts of the username', () => request
+          it.skip('gets all workouts of the username', () => request
             .get('/api/users/charlie/workouts')
             .expect(200)
             .then((res) => {
@@ -97,14 +97,13 @@ describe('/api', () => {
           });
       });
       describe('/:workout_id', () => {
-        it('GET - 200 & returns specified workout when provided with workout name', () => request
-          .get('/api/workouts/new_workout')
+        it.only('GET - 200 & returns specified workout when provided with workout name', () => request
+          .get('/api/workouts/workout%201')
           .expect(200)
           .then((res) => {
-            expect(res.body.workoutData).to.have.property('created_by');
-            expect(res.body.workoutData.workout_name).to.equal('new_workout');
-            expect(res.body.workoutData.created_by).to.equal('me');
-          }));
+          expect(res.body.workout).to.have.property('created_by');
+          expect(res.body.workout.name).to.equal('workout 1');
+        }));
         it('DELETE 204 and responds with a delete successful message', () => request
           .delete('/api/workouts/new_workout')
           .expect(204)
