@@ -63,6 +63,13 @@ describe('/api', () => {
           expect(res.body.user).to.have.property('user_name', 'charlie');
           expect(res.body.user.user_name).to.equal('charlie');
         }));
+      it('DELETE - 204 & successful deletion', () => {
+        return request.delete('/api/users/charlie')
+        .expect(204)
+        .then((res) => {
+          expect(res.status).to.equal(204);
+        })
+      })
       describe('/workouts', () => {
         it('gets all workouts of the username', () => request
           .get('/api/users/charlie/workouts')
