@@ -52,7 +52,7 @@ exports.getExerciseByUserId = (req, res, next) => {
       const usersExercises = exercises.map(exercise => {
         if (exercise.user_name === req.params.created_by)
           return exercise
-      })
+      }).filter(user => user)
       if (!exercises.length) return Promise.reject({ status: 404, msg: 'This user has no exercises' });
       res.status(200).send({ usersExercises });
     })
