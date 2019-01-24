@@ -1,5 +1,5 @@
 const Exercise = require('../models/Exercise');
-const Users = require('../models/Users');
+
 
 exports.getAllExercises = (req, res, next) => {
   Exercise.find()
