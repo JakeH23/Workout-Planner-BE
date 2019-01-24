@@ -30,8 +30,8 @@ const ExerciseSchema = new Schema({
     required: true,
   },
   user_name: {
-    type: String
-  }
+    type: String,
+  },
 });
 
 module.exports = mongoose.model('exercises', ExerciseSchema);

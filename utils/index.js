@@ -6,7 +6,7 @@ exports.formatExercises = (exercises, userDocs) => exercises.map((exercise) => {
   return {
     ...exercise,
     created_by: findId,
-    user_name: userName
+    user_name: userName,
 
   };
 });
