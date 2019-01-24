@@ -62,7 +62,8 @@ exports.getExerciseByUserId = (req, res, next) => {
 
 exports.deleteExercise = (req, res, next) => {
   Exercise.deleteOne({ title: req.params.title })
-    .then(() => {
+    .then((exercise) => {
+      if (exercise.n === 0) return Promise.reject({ status: 404, msg: 'Exercise not found' });
       res.status(204).send({ msg: 'Successful Deletion ' });
     })
     .catch(next);

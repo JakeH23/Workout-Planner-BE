@@ -47,7 +47,9 @@ exports.postNewWorkout = (req, res, next) => {
 exports.deleteWorkout = (req, res, next) => {
   Workouts.deleteOne({ name: req.params.workout_name })
     .then(
-      () => res.status(204).send({ msg: 'Successful deletion' }),
-  )
+      (workout) => {
+        if (workout.n === 0) return Promise.reject({ status: 404, msg: 'Workout not found' });
+        res.status(204).send({ msg: 'Successful deletion' })
+      })
     .catch(next);
 };
