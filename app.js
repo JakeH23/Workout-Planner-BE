@@ -10,7 +10,7 @@ mongoose
   .connect(
     DB_URL,
     { useNewUrlParser: true },
-  )
+)
   .then(console.log('connected'))
   .catch(console.log);
 
