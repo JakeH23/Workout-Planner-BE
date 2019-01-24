@@ -31,11 +31,11 @@ exports.postNewUser = (req, res, next) => {
 
 
 exports.deleteUser = (req, res, next) => {
-  Users.find({user_name: req.params.username })
+  Users.find({ user_name: req.params.username })
     .then(() => {
       res.status(204).send({ msg: 'Successful Deletion' });
-    })
-}
+    });
+};
 
 exports.getWorkoutByUserId = (req, res, next) => {
   Users.find({ user_name: req.params.username })

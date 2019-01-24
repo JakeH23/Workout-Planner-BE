@@ -63,13 +63,23 @@ describe('/api', () => {
           expect(res.body.user).to.have.property('user_name', 'charlie');
           expect(res.body.user.user_name).to.equal('charlie');
         }));
-      it('DELETE - 204 & successful deletion', () => {
-        return request.delete('/api/users/charlie')
+      it(' POST - 201 & returns created user', () => {
+        const newUser = {
+          user_name: 'test user',
+          password: 'test_password',
+        };
+        return request.post('/api/users')
+          .send(newUser)
+          .expect(201)
+          .then((res) => {
+            expect(res.body.user.user_name).to.equal('test user');
+          });
+      });
+      it('DELETE - 204 & successful deletion', () => request.delete('/api/users/charlie')
         .expect(204)
         .then((res) => {
           expect(res.status).to.equal(204);
-        })
-      })
+        }));
       describe('/workouts', () => {
         it('gets all workouts of the username', () => request
           .get('/api/users/charlie/workouts')
@@ -166,14 +176,12 @@ describe('/api', () => {
           expect(res.body.exercise).to.have.property('title');
           expect(res.body.exercise.title).to.equal('Pull Up');
         }));
-      it('DELETE - 204 and successful deletion', () => {
-        return request
-          .delete('/api/exercises/Pull%20Up')
-          .expect(204)
-          .then((res) => {
-            expect(res.status).to.equal(204);
-          })
-      })
+      it('DELETE - 204 and successful deletion', () => request
+        .delete('/api/exercises/Pull%20Up')
+        .expect(204)
+        .then((res) => {
+          expect(res.status).to.equal(204);
+        }));
     });
   });
   after(() => mongoose.disconnect());
