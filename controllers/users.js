@@ -33,7 +33,6 @@ exports.postNewUser = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
   Users.deleteOne({ user_name: req.params.username })
     .then((user) => {
-      console.log(user)
       if (user.n === 0) return Promise.reject({ status: 404, msg: 'User not found' })
       res.status(204).send({ msg: 'Successful Deletion' });
     })

@@ -94,10 +94,15 @@ describe('/api', () => {
             expect(res.body.msg).to.equal('Bad request');
           });
       });
-      it('DELETE - 204 & successful deletion', () => request.delete('/api/users/charlie')
+      it('DELETE - 204 & successful deletion', () => request.delete(`/api/users/${completedWorkoutsDocs[0].user_name}`)
         .expect(204)
         .then((res) => {
           expect(res.status).to.equal(204);
+        }));
+      it('DELETE - 404 on user that doesnt exist', () => request.delete(`/api/users/notauser`)
+        .expect(404)
+        .then((res) => {
+          expect(res.status).to.equal(404);
         }));
       describe('/workouts', () => {
         it('GET - 200 & gets all workouts of the username', () => request
@@ -176,6 +181,11 @@ describe('/api', () => {
         .then((res) => {
           expect(res.status).to.equal(204);
         }));
+      it('DELETE - 404 on workout that doesnt exist', () => request.delete(`/api/workouts/notaworkout`)
+        .expect(404)
+        .then((res) => {
+          expect(res.status).to.equal(404);
+        }));
     });
   });
   describe('/muscles', () => {
@@ -231,6 +241,11 @@ describe('/api', () => {
         .expect(204)
         .then((res) => {
           expect(res.status).to.equal(204);
+        }));
+      it('DELETE - 404 on exercise that doesnt exist', () => request.delete(`/api/exercises/bveiwyfbiyefb`)
+        .expect(404)
+        .then((res) => {
+          expect(res.status).to.equal(404);
         }));
     });
   });
