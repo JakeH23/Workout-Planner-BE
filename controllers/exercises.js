@@ -54,3 +54,11 @@ exports.getExerciseByUserId = (req, res, next) => {
     })
     .catch(next);
 };
+
+exports.deleteExercise = (req, res, next) => {
+  Exercise.deleteOne({ title: req.params.title })
+  .then(() => {
+    res.status(204).send({ msg: 'Successful Deletion '})
+  })
+    .catch(next);
+}

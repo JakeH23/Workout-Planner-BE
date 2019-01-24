@@ -159,6 +159,14 @@ describe('/api', () => {
           expect(res.body.exercise).to.have.property('title');
           expect(res.body.exercise.title).to.equal('Pull Up');
         }));
+      it('DELETE - 204 and successful deletion', () => {
+        return request
+          .delete('/api/exercises/Pull%20Up')
+          .expect(204)
+          .then((res) => {
+            expect(res.status).to.equal(204);
+          })
+      })
     });
   });
   after(() => mongoose.disconnect());

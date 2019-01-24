@@ -1,7 +1,7 @@
 const exerciseRouter = require('express').Router();
 const {
   getAllExercises, postNewExercise, getSingleExercise, getExerciseByMajorMuscle,
-  getExerciseByUserId,
+  getExerciseByUserId, deleteExercise,
 } = require('../controllers/exercises');
 
 
@@ -11,7 +11,8 @@ exerciseRouter.route('/')
 
 
 exerciseRouter.route('/:title')
-  .get(getSingleExercise);
+  .get(getSingleExercise)
+  .delete(deleteExercise);
 
 exerciseRouter.route('/muscle/:major_muscle')
   .get(getExerciseByMajorMuscle);

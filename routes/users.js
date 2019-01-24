@@ -7,6 +7,7 @@ usersRouter.route('/')
 
 usersRouter.route('/:username')
   .get(getSingleUser);
+  .delete(deleteUser);
 
 usersRouter.route('/:username/workouts')
   .get(getWorkoutByUserId);
