@@ -11,7 +11,7 @@ const config = {
   },
   production: {
     DB_URL:
-      'mongodb://majic:majicpassword123@ds211275.mlab.com:11275/workout_planner',
+      'mongodb://newuser123:password1@ds229290.mlab.com:29290/workout_planner',
   },
 };
 
