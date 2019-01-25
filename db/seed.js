@@ -1,4 +1,3 @@
-process.env.NODE_ENV = "production"
 const mongoose = require('mongoose');
 const {
   Muscles,
