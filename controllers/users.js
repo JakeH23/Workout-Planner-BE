@@ -23,6 +23,7 @@ exports.getSingleUser = (req, res, next) => {
 exports.changeUserName = (req, res, next) => {
   Users.updateOne({ user_name: req.params.username }, { $set: { user_name: req.body.newName } })
     .then((user) => {
+      if (user.n === 0) return Promise.reject({ status: 404, msg: 'Please enter username' });
       res.status(200).send({ user });
     })
     .catch(next);

@@ -19,6 +19,10 @@ const UsersSchema = new Schema({
     type: String,
     required: true,
   },
+  isFemale: {
+    type: Boolean,
+    required: true,
+  }
 });
 
 module.exports = mongoose.model('users', UsersSchema);
