@@ -1,0 +1,84 @@
+[
+  {
+    "title": "Push Up",
+    "major_muscle": "Chest",
+    "minor_muscles": [
+      "Triceps",
+      "Traps"
+    ],
+    "content": "A push-up is a common calisthenics exercise performed in a prone position by raising and lowering the body using the arms. Push-ups exercise the pectoral muscles, triceps, and anterior deltoids, with ancillary benefits to the rest of the deltoids, serratus anterior, coracobrachialis and the midsection as a whole. Push-ups are a basic exercise used in civilian athletic training or physical education and commonly in military physical training. They are also a common form of punishment used in the military, school sport, or in some martial arts dojos.",
+    "created_by": "mike",
+    "created_at": 1471522072339
+  },
+  {
+    "title": "Pull Up",
+    "major_muscle": "Lats",
+    "minor_muscles": "Biceps",
+    "content": "A pull-up is a variety of upper-body compound pulling motions for the purpose of exercise. The most popular current meaning refers to a closed-chain bodyweight movement where the body is suspended by the arms, gripping something, and pulled up with muscular effort. As this happens, the wrists remain in neutral (straight, neither flexed or extended) position, the elbows flex and the shoulder adducts and/or extends to bring the elbows to or sometimes behind the torso. A traditional pull-up relies on upper body strength with no swinging or 'kipping' (using a forceful initial movement of the legs in order to gain momentum). The exercise often targets the latissimus dorsi muscle in the back along with many other assisting muscles.",
+    "created_by": "mike",
+    "created_at": 1471522072369
+  },
+  {
+    "title": "Leg Raise",
+    "major_muscle": "Abdominals",
+    "content": "The lying leg raise is done by lying on the floor on the back. It is done without apparatus except possibly cushions or weights for added resistance. Practitioners generally caution to keep the lower back in contact with the floor and place hands to sides or under lower back for support. If the back stays flat on floor and abdominals are tight, this keeps the abs engaged. Otherwise it would just be a hip flexor movement. Due to leverage, the hardest portion of a supine (laying) leg raise is generally the first part when the legs are on the floor, as this is when the femur is parallel with the earth and perpendicular to the pull of gravity.",
+    "created_by": "mike",
+    "created_at": 1471522072379
+  },
+  {
+    "title": "Bridge",
+    "major_muscle": "Spine Erectors",
+    "minor_muscles": "Rear Shoulders",
+    "content": "Bridge is an exercise. Many variations of this exercise are employed throughout the world, most commonly the balancing of the body on the head and feet. Hands are occasionally used instead of or along with the head. It is effective in improving lower back strength. Examples of bridging in sportive or self-defense applications are seen in Kung Fu, Yoga, Judo, Brazilian jiu jitsu, Capoeira, mixed martial arts, and wrestling. The bridge can also be done starting in standing position, called a Backbend.",
+    "created_by": "charlie",
+    "created_at": 1471522072387
+  },
+  {
+    "title": "Handstand Push Up",
+    "major_muscle": "Shoulders",
+    "minor_muscles": "Traps",
+    "content": "The handstand push-up (press-up) - also called the vertical push-up (press-up) or the inverted push-up (press-up) - is a type of push-up exercise where the body is positioned in a handstand. For a true handstand, the exercise is performed free-standing, held in the air. To prepare the strength until one has built adequate balance, the feet are often placed against a wall, held by a partner, or secured in some other way from falling. Handstand pushups require significant strength, and also balance and control if performed free-standing.",
+    "created_by": "charlie",
+    "created_at": 1471522072388
+  },
+  {
+    "title": "Squat",
+    "major_muscle": "Legs",
+    "minor_muscles": "Abdominals",
+    "content": "In strength training, the squat is a compound, full body exercise that trains primarily the muscles of the thighs, hips and buttocks, quads (vastus lateralus medialis and intermedius), hamstrings, as well as strengthening the bones, ligaments and insertion of the tendons throughout the lower body. Squats are considered a vital exercise for increasing the strength and size of the legs and buttocks, as well as developing core strength. Isometrically, the lower back, the upper back, the abdominals, the trunk muscles, the costal muscles, and the shoulders and arms are all essential to the exercise and thus are trained when squatting with the proper form.",
+    "created_by": "mike",
+    "created_at": 1471522072389
+  },
+  {
+    "title": "Bicep Curl",
+    "major_muscle": "Biceps",
+    "minor_muscles": "Forearms",
+    "content": "Stand up straight with a dumbbell in each hand at arm's length. Keep your elbows close to your torso and rotate the palms of your hands until they are facing forward. ... Now, keeping the upper arms stationary, exhale and curl the weights while contracting your biceps.",
+    "created_by": "nat",
+    "created_at": 1471522072385
+  },
+  {
+    "title": "Hip Thrust",
+    "major_muscle": "Glutes",
+    "minor_muscles": "Abdominals",
+    "content": "The Hip Thrust is a glute exercise designed to improve your strength, speed and power by teaching optimal hip extension.",
+    "created_by": "nat",
+    "created_at": 1471522072384
+  },
+  {
+    "title": "Lunge",
+    "major_muscle": "Legs",
+    "minor_muscles": "Quads",
+    "content": "The lunge is a classic fitness exercise for the lower body, which helps the flexibility of the hips and hamstrings, and the strength of the buttocks, hamstrings and hip flexors. There are many variations of the lunge exercise - here is a general content of the lunge, with a few other variations described below.",
+    "created_by": "mike",
+    "created_at": 1471522072383
+  },
+  {
+    "title": "Dip",
+    "major_muscle": "Triceps",
+    "minor_muscles": "Biceps",
+    "content": "Position your hands shoulder-width apart on a secured bench or stable chair. Slide your butt off the front of the bench with your legs extended out in front of you. Straighten your arms, keeping a little bend in your elbows to keep tension on your triceps and off your elbow joints.",
+    "created_by": "mike",
+    "created_at": 1471522072382
+  }
+]

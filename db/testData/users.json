@@ -1,0 +1,21 @@
+[
+  {
+    "user_name": "charlie",
+    "password": "???",
+    "saved_workouts": [],
+    "actual_name": {
+      "forename": "Charlie",
+      "surname": "Wild"
+    }
+  },
+  {
+    "user_name": "mike",
+    "password": "????",
+    "saved_workouts": []
+  },
+  {
+    "user_name": "nat",
+    "password": "?????",
+    "saved_workouts": []
+  }
+]
