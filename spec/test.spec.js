@@ -203,6 +203,12 @@ describe('/api', () => {
           expect(res.body.muscle[0].muscle_name).to.equal('Chest');
         }));
     });
+    it('returns 404 for a get request on wrong muscle', () => request
+      .get('/api/muscles/wrongmuscle')
+      .expect(404)
+      .then((res) => {
+        expect(res.body.msg).to.equal('Muscle not found');
+      }));
   });
   describe('/exercises', () => {
     it('GET - 200 and returns all exercises', () => request

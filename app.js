@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const apiRouter = require('./routes/api');
-const { DB_URL } = process.env.NODE_ENV === 'production' ? process.env : require('./config');
+const { DB_URL } = process.env.NODE_ENV === 'production' ? process.env : require('./config')
 const { handle400s, handle404s, handle500s } = require('./errors/index');
 
 mongoose

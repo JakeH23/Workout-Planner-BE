@@ -1,3 +1,4 @@
+process.env.NODE_ENV = "production"
 const mongoose = require('mongoose');
 const seedDB = require('../db/seed');
 const { DB_URL } = require('../config');
@@ -13,7 +14,7 @@ mongoose
   .connect(
     DB_URL,
     { useNewUrlParser: true },
-  )
+)
   .then(() => seedDB({
     muscles,
     users,
