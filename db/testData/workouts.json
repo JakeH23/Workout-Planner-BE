@@ -26,5 +26,12 @@
     "created_by": "nat",
     "private": "true",
     "created_at": 1471522072386
+  },
+  {
+    "name": "Butt Buster",
+    "exercises": ["Lunge", "Squat", "Leg Raise", "Hip Thrust"],
+    "created_by": "charlie",
+    "private": "false",
+    "created_at": 1471522072386
   }
 ]
