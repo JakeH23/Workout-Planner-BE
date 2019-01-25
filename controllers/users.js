@@ -1,5 +1,5 @@
 const Users = require('../models/Users');
-const Workout = require('../models/Workout');
+const SavedWorkouts = require('../models/SavedWorkouts');
 
 exports.getAllUsers = (req, res, next) => {
   Users.find()
@@ -39,13 +39,15 @@ exports.deleteUser = (req, res, next) => {
     .catch(next)
 };
 
-exports.getWorkoutByUserId = (req, res, next) => {
-  Users.find({ user_name: req.params.username })
-    .then((user) => {
-      if (!user.length) return Promise.reject({ status: 404, msg: 'User not found' });
-      [user] = user;
-
-      res.send({ saved_workouts: user.saved_workouts });
-    })
-    .catch(next);
+exports.getUserSavedWorkouts = (req, res, next) => {
+  SavedWorkouts.find()
+  .then((savedWorkouts) => {
+    const userSaved = savedWorkouts.map(workout => {
+      if (workout.saved_by === req.params.username) {
+        return workout;
+      };
+    }).filter(user => user);
+    res.status(200).send({ userSaved });
+  })
+  .catch(next);
 };

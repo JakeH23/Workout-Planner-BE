@@ -19,10 +19,6 @@ const UsersSchema = new Schema({
     type: String,
     required: true,
   },
-  completed_workouts: [
-    { type: Schema.Types.ObjectId, ref: 'completed_workouts', default: [] },
-  ],
-  saved_workouts: [{ type: Schema.Types.ObjectId, ref: 'workouts', default: [] }],
 });
 
 module.exports = mongoose.model('users', UsersSchema);
