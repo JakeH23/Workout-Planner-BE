@@ -52,6 +52,30 @@ describe('/api', () => {
         expect(res.body.users).to.have.length(3);
         expect(res.body.users[0]).to.have.property('user_name');
       }));
+    it(' POST - 201 & returns created user', () => {
+      const newUser = {
+        user_name: 'test user',
+        password: 'test_password',
+      };
+      return request.post('/api/users')
+        .send(newUser)
+        .expect(201)
+        .then((res) => {
+          expect(res.body.user.user_name).to.equal('test user');
+        });
+    });
+    it(' POST - 400 for an incomplete request', () => {
+      const newUser = {
+        user_name: '',
+        password: 'test_password',
+      };
+      return request.post('/api/users')
+        .send(newUser)
+        .expect(400)
+        .then((res) => {
+          expect(res.body.msg).to.equal('Bad request');
+        });
+    });
     describe('/:username', () => {
       it('GET - 200 & returns specified user when provided with username', () => request
         .get(`/api/users/${completedWorkoutsDocs[0].user_name}`)
@@ -60,34 +84,20 @@ describe('/api', () => {
           expect(res.body.user).to.have.property('user_name', `${completedWorkoutsDocs[0].user_name}`);
           expect(res.body.user.user_name).to.equal(`${completedWorkoutsDocs[0].user_name}`);
         }));
-      it('returns 404 for a get request on wrong user', () => request
+      it('GET - returns 404 for a get request on wrong user', () => request
         .get('/api/users/wronguser')
         .expect(404)
         .then((res) => {
           expect(res.body.msg).to.equal('User not found');
         }));
-      it(' POST - 201 & returns created user', () => {
-        const newUser = {
-          user_name: 'test user',
-          password: 'test_password',
-        };
-        return request.post('/api/users')
-          .send(newUser)
-          .expect(201)
+      it.only('PATCH - 200 and successful update of username', () => {
+        const newName = { newName: 'patch-test'};
+        return request.patch('/api/users/charlie')
+          .send(newName)
+          .expect(200)
           .then((res) => {
-            expect(res.body.user.user_name).to.equal('test user');
-          });
-      });
-      it(' POST - 400 for an incomplete request', () => {
-        const newUser = {
-          user_name: '',
-          password: 'test_password',
-        };
-        return request.post('/api/users')
-          .send(newUser)
-          .expect(400)
-          .then((res) => {
-            expect(res.body.msg).to.equal('Bad request');
+            expect(res.body.user.n).to.equal(1);
+            expect(res.body.user.ok).to.equal(1);
           });
       });
       it('DELETE - 204 & successful deletion', () => request.delete(`/api/users/${completedWorkoutsDocs[0].user_name}`)
