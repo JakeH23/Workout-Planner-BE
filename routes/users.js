@@ -1,7 +1,7 @@
 const usersRouter = require('express').Router();
 
 const {
-  getAllUsers, postNewUser, getSingleUser, getUserSavedWorkouts, deleteUser,
+  getAllUsers, postNewUser, getSingleUser, getUserSavedWorkouts, deleteUser, changeUserName,
 } = require('../controllers/users');
 
 const { getUserCompletedWorkouts } = require('../controllers/completedworkouts');
@@ -12,6 +12,7 @@ usersRouter.route('/')
 
 usersRouter.route('/:username')
   .get(getSingleUser)
+  .patch(changeUserName)
   .delete(deleteUser);
 
 usersRouter.route('/:username/saved_workouts')

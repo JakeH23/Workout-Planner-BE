@@ -15,10 +15,18 @@ exports.getSingleUser = (req, res, next) => {
     .then((user) => {
       if (!user.length) return Promise.reject({ status: 404, msg: 'User not found' });
       [user] = user;
-      res.send({ user });
+      res.status(200).send({ user });
     })
     .catch(next);
 };
+
+exports.changeUserName = (req, res, next) => {
+  Users.updateOne({ user_name: req.params.username }, { $set: { user_name: req.body.newName } })
+    .then((user) => {
+      res.status(200).send({ user });
+    })
+    .catch(next);
+}
 
 exports.postNewUser = (req, res, next) => {
   const newUser = req.body;
@@ -41,11 +49,11 @@ exports.deleteUser = (req, res, next) => {
 
 exports.getUserSavedWorkouts = (req, res, next) => {
   SavedWorkouts.find()
-  .then((savedWorkouts) => {
-    const userSaved = savedWorkouts.map(workout => {
-      if (workout.saved_by === req.params.username) {
+    .then((savedWorkouts) => {
+      const userSaved = savedWorkouts.map(workout => {
+        if (workout.saved_by === req.params.username) {
         return workout;
-      };
+        };
     }).filter(user => user);
     res.status(200).send({ userSaved });
   })
