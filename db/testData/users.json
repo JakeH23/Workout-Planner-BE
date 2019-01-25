@@ -17,5 +17,15 @@
     "user_name": "nat",
     "password": "?????",
     "saved_workouts": []
+  },
+  {
+    "user_name": "joe",
+    "password": "?????",
+    "saved_workouts": []
+  },
+  {
+    "user_name": "jake",
+    "password": "????",
+    "saved_workouts": []
   }
 ]
