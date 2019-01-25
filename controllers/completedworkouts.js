@@ -9,7 +9,7 @@ exports.getUserCompletedWorkouts = (req, res, next) => {
           return workout;
         };
       }).filter(user => user);
-      // if (!userCompleted.length) return Promise.reject({ status: 404, msg: 'No workouts found' });
+      if (!userCompleted.length) return Promise.reject({ status: 404, msg: 'No workouts added' });
 
       res.status(200).send({ userCompleted });
     })
