@@ -61,7 +61,7 @@ describe('/api', () => {
         .get(`/api/users/${completedWorkoutsDocs[0].user_name}`)
         .expect(200)
         .then((res) => {
-          expect(res.body.user).to.have.property(`user_name`, `${completedWorkoutsDocs[0].user_name}`);
+          expect(res.body.user).to.have.property('user_name', `${completedWorkoutsDocs[0].user_name}`);
           expect(res.body.user.user_name).to.equal(`${completedWorkoutsDocs[0].user_name}`);
         }));
       it('returns 404 for a get request on wrong user', () => request
