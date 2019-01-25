@@ -34,12 +34,8 @@ describe('/api', () => {
     workouts,
     completedWorkouts,
   }).then((docs) => {
-    console.log('seeded fresh database');
-    completedWorkoutsDocs = docs[0];
-    workoutsDocs = docs[1];
-    exercisesDocs = docs[2];
-    usersDocs = docs[3];
-    musclesDocs = docs[4]
+    [completedWorkoutsDocs, workoutsDocs, exercisesDocs,
+      usersDocs, musclesDocs] = docs;
 
   }));
   it('returns 404 for a get request on a url that doesnt exist', () => request
@@ -105,11 +101,11 @@ describe('/api', () => {
           expect(res.status).to.equal(404);
         }));
       describe('/workouts', () => {
-        it('GET - 200 & gets all workouts of the username', () => request
-          .get(`/api/users/${completedWorkoutsDocs[0].user_name}/workouts`)
+        it('GET - 200 & gets all saved workouts of the username', () => request
+          .get(`/api/users/${completedWorkoutsDocs[0].user_name}/saved_workouts`)
           .expect(200)
           .then((res) => {
-            expect(res.body).to.have.key('saved_workouts');
+            expect(res.body).to.have.key('userSaved');
           }));
       });
       describe('/completed_workouts', () => {
