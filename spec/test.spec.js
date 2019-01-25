@@ -56,6 +56,7 @@ describe('/api', () => {
       const newUser = {
         user_name: 'test user',
         password: 'test_password',
+        isFemale: true,
       };
       return request.post('/api/users')
         .send(newUser)
