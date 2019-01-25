@@ -61,8 +61,8 @@ describe('/api', () => {
         .get(`/api/users/${completedWorkoutsDocs[0].user_name}`)
         .expect(200)
         .then((res) => {
-          expect(res.body.user).to.have.property('user_name', 'charlie');
-          expect(res.body.user.user_name).to.equal('charlie');
+          expect(res.body.user).to.have.property(`user_name`, `${completedWorkoutsDocs[0].user_name}`);
+          expect(res.body.user.user_name).to.equal(`${completedWorkoutsDocs[0].user_name}`);
         }));
       it('returns 404 for a get request on wrong user', () => request
         .get('/api/users/wronguser')
@@ -106,7 +106,7 @@ describe('/api', () => {
         }));
       describe('/workouts', () => {
         it('GET - 200 & gets all workouts of the username', () => request
-          .get('/api/users/charlie/workouts')
+          .get(`/api/users/${completedWorkoutsDocs[0].user_name}/workouts`)
           .expect(200)
           .then((res) => {
             expect(res.body).to.have.key('saved_workouts');
@@ -114,7 +114,7 @@ describe('/api', () => {
       });
       describe('/completed_workouts', () => {
         it('GET - 200 and all user completed workouts', () => {
-          return request.get('/api/users/charlie/completed_workouts')
+          return request.get(`/api/users/${completedWorkoutsDocs[0].user_name}/completed_workouts`)
             .expect(200)
             .then((res) => {
               expect(res.body.userCompleted[0]).to.have.property('workout');

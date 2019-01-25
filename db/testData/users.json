@@ -2,7 +2,11 @@
   {
     "user_name": "charlie",
     "password": "???",
-    "saved_workouts": []
+    "saved_workouts": [],
+    "actual_name": {
+      "forename": "Charlie",
+      "surname": "Wild"
+    }
   },
   {
     "user_name": "mike",
