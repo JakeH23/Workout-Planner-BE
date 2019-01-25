@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha spec",
     "lint": "eslint ./",
+    "start": "node listen.js",
     "fix": "eslint --fix ./",
     "dev": "nodemon listen.js",
     "seed:dev": "node ./db/seed.dev.js"
