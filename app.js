@@ -9,9 +9,8 @@ const { handle400s, handle404s, handle500s } = require('./errors/index');
 
 mongoose
   .connect(
-    DB_URL,
-    { useNewUrlParser: true },
-)
+    DB_URL
+  )
   .then(console.log('connected'))
   .catch(console.log);
 

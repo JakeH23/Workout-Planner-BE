@@ -11,9 +11,8 @@ const {
 
 mongoose
   .connect(
-    DB_URL,
-    { useNewUrlParser: true },
-)
+    DB_URL
+  )
   .then(() => seedDB({
     muscles,
     users,
