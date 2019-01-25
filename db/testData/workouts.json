@@ -33,5 +33,19 @@
     "created_by": "charlie",
     "private": "false",
     "created_at": 1471522072386
+  },
+  {
+    "name": "Upper Body",
+    "exercises": ["Pull Up", "Bicep Curl", "Push Up", "Dip"],
+    "created_by": "nat",
+    "private": "true",
+    "created_at": 1471522072389
+  },
+  {
+    "name": "Body Weight Pump",
+    "exercises": ["Leg Raise", "Bridge", "Pull Up", "Handstand Push Up"],
+    "created_by": "mike",
+    "private": "false",
+    "created_at": 1471522072389
   }
 ]
