@@ -30,7 +30,7 @@ exports.getSingleWorkout = (req, res, next) => {
   Workouts.find({ name: req.params.workout_name })
     .then((workout) => {
       if (!workout.length) return Promise.reject({ status: 404, msg: 'Workout not found' });
-      [ workout ] = workout;
+      [workout] = workout;
       res.status(200).send({ workout });
     })
     .catch(next);
@@ -53,7 +53,7 @@ exports.deleteWorkout = (req, res, next) => {
   Workouts.deleteOne({ name: req.params.workout_name })
     .then(
       (workout) => {
-        if (workout.n === 0) return Promise.reject({ status: 404, msg: 'Workout not found' });
+        if (workout.result.n === 0) return Promise.reject({ status: 404, msg: 'Workout not found' });
         res.status(204).send({ msg: 'Successful deletion' })
       })
     .catch(next);
