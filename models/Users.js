@@ -8,17 +8,17 @@ const UsersSchema = new Schema({
     required: true,
   },
   actual_name: {
-    forename: {
-      type: String,
-    },
-    surname: {
-      type: String,
-    },
+    type: String,
+    required: true,
   },
   password: {
     type: String,
     required: true,
   },
+  isFemale: {
+    type: Boolean,
+    required: true,
+  }
 });
 
 module.exports = mongoose.model('users', UsersSchema);

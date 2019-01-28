@@ -49,13 +49,14 @@ describe('/api', () => {
       .get('/api/users')
       .expect(200)
       .then((res) => {
-        expect(res.body.users).to.have.length(3);
+        expect(res.body.users).to.have.length(5);
         expect(res.body.users[0]).to.have.property('user_name');
       }));
     it(' POST - 201 & returns created user', () => {
       const newUser = {
         user_name: 'test user',
         password: 'test_password',
+        isFemale: true,
       };
       return request.post('/api/users')
         .send(newUser)
@@ -90,14 +91,23 @@ describe('/api', () => {
         .then((res) => {
           expect(res.body.msg).to.equal('User not found');
         }));
-      it.only('PATCH - 200 and successful update of username', () => {
-        const newName = { newName: 'patch-test'};
-        return request.patch('/api/users/charlie')
+      it('PATCH - 200 and successful update of username', () => {
+        const newName = { newName: 'patch-test' };
+        return request.patch(`/api/users/${completedWorkoutsDocs[0].user_name}`)
           .send(newName)
           .expect(200)
           .then((res) => {
             expect(res.body.user.n).to.equal(1);
             expect(res.body.user.ok).to.equal(1);
+          });
+      });
+      it('PATCH - 404 for bad patch request', () => {
+        const badReq = { newName: 'utcvutc' };
+        return request.patch('/api/users/charli')
+          .send(badReq)
+          .expect(404)
+          .then((res) => {
+            expect(res.body.msg).to.equal("Please enter username");
           });
       });
       it('DELETE - 204 & successful deletion', () => request.delete(`/api/users/${completedWorkoutsDocs[0].user_name}`)
@@ -135,7 +145,7 @@ describe('/api', () => {
       .get('/api/workouts')
       .expect(200)
       .then((res) => {
-        expect(res.body.workouts).to.have.length(4);
+        expect(res.body.workouts).to.have.length(7);
       }));
     it('POST - 201 and a confirmation message', () => {
       const workout = {

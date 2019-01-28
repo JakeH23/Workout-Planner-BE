@@ -3,19 +3,35 @@
     "user_name": "charlie",
     "password": "???",
     "saved_workouts": [],
-    "actual_name": {
-      "forename": "Charlie",
-      "surname": "Wild"
-    }
+    "isFemale": false,
+    "actual_name": "Charlie Wild"
   },
   {
     "user_name": "mike",
     "password": "????",
-    "saved_workouts": []
+    "saved_workouts": [],
+    "isFemale": false,
+    "actual_name": "Mike Newham"
   },
   {
     "user_name": "nat",
     "password": "?????",
-    "saved_workouts": []
+    "saved_workouts": [],
+    "isFemale": true,
+    "actual_name": "Natalie Clamp"
+  },
+  {
+    "user_name": "joe",
+    "password": "?????",
+    "saved_workouts": [],
+    "isFemale": false,
+    "actual_name": "Joseph Boffey"
+  },
+  {
+    "user_name": "jake",
+    "password": "????",
+    "saved_workouts": [],
+    "isFemale": false,
+    "actual_name": "Jake Heaney"
   }
 ]

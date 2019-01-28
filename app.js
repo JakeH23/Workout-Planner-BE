@@ -4,14 +4,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const listEndpoints = require('express-list-endpoints');
 const apiRouter = require('./routes/api');
-const { DB_URL } = process.env.NODE_ENV === 'production' ? process.env : require('./config')
+const { DB_URL } = process.env.NODE_ENV === 'production' ? process.env : require('./config');
 const { handle400s, handle404s, handle500s } = require('./errors/index');
 
 mongoose
-  .connect(
-    DB_URL,
-    { useNewUrlParser: true },
-)
+  .connect(DB_URL)
   .then(console.log('connected'))
   .catch(console.log);
 
