@@ -11,10 +11,6 @@ const UsersSchema = new Schema({
     type: String,
     required: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
   isFemale: {
     type: Boolean,
     required: true,

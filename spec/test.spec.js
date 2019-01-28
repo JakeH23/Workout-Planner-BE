@@ -107,7 +107,7 @@ describe('/api', () => {
           .send(badReq)
           .expect(404)
           .then((res) => {
-            expect(res.body.msg).to.equal("Please enter username");
+            expect(res.body.msg).to.equal('Please enter username');
           });
       });
       it('DELETE - 204 & successful deletion', () => request.delete(`/api/users/${usersDocs[0].user_name}`)
