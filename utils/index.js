@@ -31,15 +31,13 @@ exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((wor
   };
 });
 
-exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs, userDocs) => completedWorkouts.map((completedWorkout) => {
+exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs) => completedWorkouts.map((completedWorkout) => {
   const findWorkoutId = workoutDocs.find(workout => workout.name === completedWorkout.workout)._id;
-  const findUserId = userDocs.find(user => user.user_name === completedWorkout.user)._id;
-  const findUserName = userDocs.find(user => user.user_name === completedWorkout.user).user_name;
+
   return {
     ...completedWorkout,
     workout: findWorkoutId,
-    user_id: findUserId,
-    user_name: findUserName,
+    
   };
 });
 

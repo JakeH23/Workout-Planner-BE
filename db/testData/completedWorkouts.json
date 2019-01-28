@@ -4,6 +4,8 @@
 
     "workout": "workout 1",
 
-    "user": "charlie"
+    "workout_name": "workout 1",
+
+    "completed_by": "charlie"
   }
 ]
