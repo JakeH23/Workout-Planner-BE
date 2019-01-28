@@ -36,7 +36,6 @@ describe('/api', () => {
   }).then((docs) => {
     [completedWorkoutsDocs, workoutsDocs, exercisesDocs,
       usersDocs, musclesDocs] = docs;
-
   }));
   it('returns 404 for a get request on a url that doesnt exist', () => request
     .get('/testing')
@@ -57,11 +56,7 @@ describe('/api', () => {
         user_name: 'test user',
         password: 'test_password',
         isFemale: true,
-<<<<<<< HEAD
-        actual_name: 'test user'
-=======
-        actual_name: 'Charlie Wild',
->>>>>>> 97d5b2e627f83f74e739256697644a3e30e201db
+        actual_name: 'test user',
       };
       return request.post('/api/users')
         .send(newUser)

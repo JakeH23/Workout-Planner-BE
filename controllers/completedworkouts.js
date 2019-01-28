@@ -23,7 +23,7 @@ exports.addCompletedWorkout = async (req, res, next) => {
     workout: _id,
     workout_name: name,
     completed_by: req.body.completed_by,
-   
+ 
   };
   CompletedWorkouts.create(newCompletedWorkout)
     .then(workout => res.status(201).send({ workout }))
