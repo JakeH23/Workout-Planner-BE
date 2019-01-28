@@ -31,7 +31,6 @@ exports.changeUserDetails = (req, res, next) => {
 
 exports.postNewUser = (req, res, next) => {
   const newUser = req.body;
-  console.log(req.body)
   Users.create(newUser)
     .then((user) => {
       res.status(201).send({ user });
