@@ -231,7 +231,7 @@ describe('/api', () => {
       .get('/api/exercises')
       .expect(200)
       .then((res) => {
-        expect(res.body.exercises).to.have.length(24);
+        expect(res.body.exercises).to.have.length(10);
         expect(res.body.exercises[0]).to.have.property('major_muscle');
       }));
     it('POST - 201 and successfully adds an exercise to the database', () => {
