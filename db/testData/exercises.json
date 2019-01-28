@@ -1,10 +1,10 @@
 [
   {
     "title": "Push Up",
-    "major_muscle": "Chest",
+    "major_muscle": "chest",
     "minor_muscles": [
-      "Triceps",
-      "Traps"
+      "triceps",
+      "shoulders"
     ],
     "content": "How to: Begin with hands placed directly under shoulders and feet slightly wider than hip-width distance apart on the floor. Step legs behind with feet together and toes curled under, then lift hips up and keep chest in front of hands. Tense every muscle in body to form a straight line from head through to heel, and maintain this line throughout.Lower chest to touch floor. Always aim to go as low as you can, as to access your full range of motion. Push palms into the floor and extend arms to press body back up to start position.",
     "created_by": "mike",
@@ -12,183 +12,242 @@
   },
   {
     "title": "Pull Up",
-    "major_muscle": "Lats",
-    "minor_muscles": "Biceps",
+    "major_muscle": "upperback",
+    "minor_muscles": [
+      "midback",
+      "biceps"
+    ],
     "content": "How to: Grab the handles of the pull-up station with your palms facing away from you and your arms fully extended. Your hands should be around shoulder-width apart. Squeeze your shoulder blades together, exhale and drive your elbows towards your hips to bring your chin above the bar. Lower under control back to the start position.",
     "created_by": "mike",
     "created_at": 1471522072369
   },
   {
     "title": "Leg Raise",
-    "major_muscle": "Abdominals",
+    "major_muscle": "quadriceps",
+    "minor_muscles": [
+      "abdominals"
+    ],
     "content": "How to: Lie on your back, legs straight and together. Keep your legs straight and lift them all the way up to the ceiling until your butt comes off the floor. Slowly lower your legs back down till they’re just above the floor. Hold for a moment. Raise your legs back up. Repeat.",
     "created_by": "mike",
     "created_at": 1471522072379
   },
   {
     "title": "Bridge",
-    "major_muscle": "Spine Erectors",
-    "minor_muscles": "Rear Shoulders",
+    "major_muscle": "glutes",
+    "minor_muscles": [
+      "abdominals",
+      "obliques"
+    ],
     "content": "How to: Lie on your back with your hands by your sides, your knees bent and feet flat on the floor. Make sure your feet are under your knees. Tighten your abdominal and buttock muscles. Raise your hips up to create a straight line from your knees to shoulders. Squeeze your core and try to pull your belly button back toward your spine. If your hips sag or drop, lower yourself back on the floor. The goal is to maintain a straight line from your shoulders to your knees and hold for 20 to 30 seconds. You may need to begin by holding the bridge position for a few seconds as you build your strength. It's better to hold the correct position for a shorter time than to go longer in the incorrect position.",
     "created_by": "charlie",
     "created_at": 1471522072387
   },
   {
     "title": "Handstand Push Up",
-    "major_muscle": "Shoulders",
-    "minor_muscles": "Traps",
+    "major_muscle": "shoulders",
+    "minor_muscles": [
+      "forearms",
+      "upperback"
+    ],
     "content": "How to: Face a wall in a standing position. Kick your feet up so you’re in a handstand position against a wall. Squeeze your abs, glutes and thigh muscles. Lower yourself toward the ground as far as possible. Push back up and repeat.",
     "created_by": "charlie",
     "created_at": 1471522072388
   },
   {
     "title": "Squat",
-    "major_muscle": "Legs",
-    "minor_muscles": "Abdominals",
+    "major_muscle": "hamstrings",
+    "minor_muscles": [
+      "glutes",
+      "quadriceps"
+    ],
     "content": "How to: Stand with your feet shoulder width apart. You can place your hands behind your head. This will be your starting position. Begin the movement by flexing your knees and hips, sitting back with your hips. Continue down to full depth if you are able,and quickly reverse the motion until you return to the starting position. As you squat, keep your head and chest up and push your knees out.",
     "created_by": "mike",
     "created_at": 1471522072389
   },
   {
     "title": "Bicep Curl",
-    "major_muscle": "Biceps",
-    "minor_muscles": "Forearms",
+    "major_muscle": "biceps",
+    "minor_muscles": [
+      "forearms"
+    ],
     "content": "How to: Stand up straight with a dumbbell in each hand at arm's length. Keep your elbows close to your torso and rotate the palms of your hands until they are facing forward. ... Now, keeping the upper arms stationary, exhale and curl the weights while contracting your biceps.",
     "created_by": "nat",
     "created_at": 1471522072385
   },
   {
     "title": "Hip Thrust",
-    "major_muscle": "Glutes",
-    "minor_muscles": "Abdominals",
+    "major_muscle": "glutes",
+    "minor_muscles": [
+      "quadriceps",
+      "hamstrings"
+    ],
     "content": "How to: Start with your shoulder blades against a bench, and your arms spread across it for stability.  If your shoulders don’t reach the bench, you may need to start with your butt slightly off the floor.  Bend your knees to about 90 degrees, and make sure your feet are flat on the floor. Take a big breath in, blow your air out fully, and brace your core. Squeeze your glutes, lift up your hips, and hold a second or two.  It’s very important that you don’t hyperextend your lower back at the top.",
     "created_by": "nat",
     "created_at": 1471522072384
   },
   {
     "title": "Lunge",
-    "major_muscle": "Legs",
-    "minor_muscles": "Quads",
+    "major_muscle": "quadriceps",
+    "minor_muscles": [
+      "glutes",
+      "calves"
+    ],
     "content": "How to: Stand tall with feet hip-width apart. Engage core. Take a big step forward with right leg and start to shift weight forward so heel hits the floor first. Lower body until right thigh is parallel to floor and right shin is vertical (it's okay if knee shifts forward a little as long as it doesn't go past right toe). If mobility allows, lightly tap left knee to ground while keeping weight in right heel. Press into right heel to drive back up to starting position. Repeat on the other side.",
     "created_by": "mike",
     "created_at": 1471522072383
   },
   {
     "title": "Dip",
-    "major_muscle": "Triceps",
-    "minor_muscles": "Biceps",
+    "major_muscle": "triceps",
+    "minor_muscles": [
+      "biceps"
+    ],
     "content": "How to: Position your hands shoulder-width apart on a secured bench or stable chair. Slide your butt off the front of the bench with your legs extended out in front of you. Straighten your arms, keeping a little bend in your elbows to keep tension on your triceps and off your elbow joints.",
     "created_by": "mike",
     "created_at": 1471522072382
   },
   {
     "title": "Seated Barbell Press",
-    "major_muscle": "Shoulders",
-    "minor_muscles": "Upper Back",
+    "major_muscle": "shoulders",
+    "minor_muscles": [
+      "upperback",
+      "chest"
+    ],
     "content": "How to: Sit on the bench holding a barbell in front of your shoulders with an overhand grip. Press the weight up above your head until your arms are fully extended. Return slowly to the start position.",
     "created_by": "mike",
     "created_at": 1471522072382
   },
   {
     "title": "Inverted Rows",
-    "major_muscle": "Upper Back",
-    "minor_muscles": "Lower Back",
+    "major_muscle": "midback",
+    "minor_muscles": [
+      "lowerback",
+      "upperback"
+    ],
     "content": "How to: Set up a bar in a rack at waist height. Hold it at shoulder-width, with an underhand grip, and hang underneath. Position yourself with heels out in front of you and arms fully extended. Your body should be straight from shoulders to ankles. Flex at the elbows to pull your chest up to the bar. Lower yourself back to the start position under control.",
     "created_by": "mike",
     "created_at": 1471522072382
   },
   {
     "title": "Cable Flys",
-    "major_muscle": "Chest",
-    "minor_muscles": "Biceps",
+    "major_muscle": "chest",
+    "minor_muscles": [
+      "biceps",
+      "forearms"
+    ],
     "content": "How to: Attach stirrup handles to the high pulleys of a cable crossover machine. Take one in each hand – your arms should be outstretched with a slight bend at the elbow. Place one foot slightly forward, brace you core, and pull the handles slightly downward and across your body until your hands meet, then slowly return to the start position.",
     "created_by": "mike",
     "created_at": 1471522072382
   },
   {
     "title": "Face Pulls",
-    "major_muscle": "Upper Back",
-    "minor_muscles": "Triceps",
+    "major_muscle": "upperback",
+    "minor_muscles": [
+      "forearms"
+    ],
     "content": "How to: Stand opposite a high pulley column with the handle attached at eye level. Grab it and exhale as you pull the weight directly towards your face, focusing on bringing your shoulder blades together. For perfect form, ensure your upper arms are parallel to the ground.",
     "created_by": "charlie",
     "created_at": 1471522072382
   },
   {
     "title": "Ab Wheel Rollout",
-    "major_muscle": "Abs",
-    "minor_muscles": "Chest",
+    "major_muscle": "abdominals",
+    "minor_muscles": [
+      "obliques"
+    ],
     "content": "How to: Get on all fours, holding an ab wheel in both hands. (if you don’t have one, use a small barbell with a towel wrapped around it). Roll forward, keeping your back straight, knees on the floor and extending your arms in front of you, and then tighten your abs to pull yourself back to the starting position.",
     "created_by": "nat",
     "created_at": 1471522072382
   },
   {
     "title": "Dumbell Stepup",
-    "major_muscle": "Biceps",
-    "minor_muscles": "Chest",
+    "major_muscle": "biceps",
+    "minor_muscles": [
+      "forearms",
+      "calves"
+    ],
     "content": "How to: Stand holding dumbbells at your side with palms facing towards your body. Place your right foot onto the bench and push up through your heel to lift yourself up and place your left foot on the platform. Step back down with your left foot, concentrating on flexing your hip and the knee of your right leg. Repeat on the other side.",
     "created_by": "nat",
     "created_at": 1471522072382
   },
   {
     "title": "Dumbell Bench Press",
-    "major_muscle": "Chest",
-    "minor_muscles": "Triceps",
+    "major_muscle": "chest",
+    "minor_muscles": [
+      "triceps"
+    ],
     "content": "How to: Lie down on a flat bench with a dumbbell in each hand, holding them in front of your shoulders. Breathe out and use your chest to push the dumbbells up, straightening your arms. Pause for a second with your arms fully extended and then return under control to the start position.",
     "created_by": "charlie",
     "created_at": 1471522072382
   },
   {
     "title": "Underhand Lat Pulldown",
-    "major_muscle": "Upper Back",
-    "minor_muscles": "Triceps",
+    "major_muscle": "upperback",
+    "minor_muscles": [
+      "midback"
+    ],
     "content": "How to: Grab the overhead bar with a grip narrower than shoulder width apart and your palms facing towards you. Lean your torso back to around 30 degrees and set your core. Keeping your elbows in and your upper body stationary, pull the bar down until it touches your chest. Hold for a second before slowly extending your arms to the start position.",
     "created_by": "mike",
     "created_at": 1471522072382
   },
   {
     "title": "Seated Dumbell Curl",
-    "major_muscle": "Biceps",
-    "minor_muscles": "Triceps",
+    "major_muscle": "biceps",
+    "minor_muscles": [
+      "forearms"
+    ],
     "content": "How to: Sit on a bench, hold two dumbbells at arms length and let them rest by your side. Use your bicep to curl the dumbbells up to your shoulders, then slowly lower them back down to your side and repeat.",
     "created_by": "nat",
     "created_at": 1471522072382
   },
   {
     "title": "Tricep Pushdown",
-    "major_muscle": "Biceps",
-    "minor_muscles": "Triceps",
+    "major_muscle": "triceps",
+    "minor_muscles": [
+      "forearms"
+    ],
     "content": "How to: Attach a rope handle to the high pulley of a cable station. Keeping your elbows tucked in at your sides grab the handle, tense your core, and bring your hands down until your arms are fully extended, then return to the starting position. Only your forearms should move.",
     "created_by": "nat",
     "created_at": 1471522072382
   },
   {
     "title": "Dumbell Bench Press",
-    "major_muscle": "Chest",
-    "minor_muscles": "Triceps",
+    "major_muscle": "chest",
+    "minor_muscles": [
+      "triceps"
+    ],
     "content": "How to: Lie down on a flat bench with a dumbbell in each hand, holding them in front of your shoulders. Breathe out and use your chest to push the dumbbells up, straightening your arms. Pause for a second with your arms fully extended and then return under control to the start position.",
     "created_by": "nat",
     "created_at": 1471522072382
   },
   {
     "title": "Weighted Ab Curl",
-    "major_muscle": "Abs",
-    "minor_muscles": "Triceps",
+    "major_muscle": "abdominals",
+    "minor_muscles": [
+      "obliques"
+    ],
     "content": "How to: Attach a rope to a high pulley and kneel in front of it, with the handles held either side of your neck. Without moving your hips, contract your abs to bring your elbows to your thighs. Pause for a moment then slowly return to the starting position.",
     "created_by": "nat",
     "created_at": 1471522072382
   },
   {
     "title": "Bulgarian Split Squat",
-    "major_muscle": "Abs",
-    "minor_muscles": "Triceps",
+    "major_muscle": "quadriceps",
+    "minor_muscles": [
+      "hamstrings",
+      "glutes"
+    ],
     "content": "How to: Holding a dumbbell in each hand, stand facing away from a bench with one leg resting on it, laces down. Squat down with your standing leg until the knee of your trailing leg almost touches the floor. Push up through your front foot to return to the start position.",
     "created_by": "nat",
     "created_at": 1471522072382
   },
   {
     "title": "Seated Row",
-    "major_muscle": "Abs",
-    "minor_muscles": "Triceps",
+    "major_muscle": "lowerback",
+    "minor_muscles": [
+      "midback",
+      "lowerback"
+    ],
     "content": "How to: Sit in front of a pulley column and set your feet firmly at its base. Grab the handle and, with your arms extended, lean back until your torso is at a 90-degree angle from your legs. Now, keeping the torso stationary, pull the handles back towards your chest, squeezing your back muscles hard.",
     "created_by": "nat",
     "created_at": 1471522072382

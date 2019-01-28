@@ -1,32 +1,44 @@
 [
   {
-    "muscle_name": "Chest"
+    "muscle_name": "abdominals"
   },
   {
-    "muscle_name": "Biceps"
+    "muscle_name": "biceps"
   },
   {
-    "muscle_name": "Lats"
+    "muscle_name": "calves"
   },
   {
-    "muscle_name": "Lower Back"
+    "muscle_name": "chest"
   },
   {
-    "muscle_name": "Legs"
+    "muscle_name": "forearms"
   },
   {
-    "muscle_name": "Quads"
+    "muscle_name": "glutes"
   },
   {
-    "muscle_name": "Shoulders"
+    "muscle_name": "hamstrings"
   },
   {
-    "muscle_name": "Abs"
+    "muscle_name": "lowerback"
   },
   {
-    "muscle_name": "Glutes"
+    "muscle_name": "midback"
   },
   {
-    "muscle_name": "Triceps"
+    "muscle_name": "quadriceps"
+  },
+  {
+    "muscle_name": "shoulders"
+  },
+  {
+    "muscle_name": "obliques"
+  },
+  {
+    "muscle_name": "triceps"
+  },
+  {
+    "muscle_name": "upperback"
   }
 ]
