@@ -33,11 +33,9 @@ exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((wor
 
 exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs) => completedWorkouts.map((completedWorkout) => {
   const findWorkoutId = workoutDocs.find(workout => workout.name === completedWorkout.workout)._id;
-
   return {
     ...completedWorkout,
     workout: findWorkoutId,
-    
   };
 });
 
