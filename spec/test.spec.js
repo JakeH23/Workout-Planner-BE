@@ -25,7 +25,7 @@ describe('/api', () => {
   let musclesDocs;
   let usersDocs;
   let exercisesDocs;
-  let workoutDocs;
+  let workoutsDocs;
   let completedWorkoutsDocs;
   beforeEach(() => seedDB({
     muscles,
@@ -57,6 +57,7 @@ describe('/api', () => {
         user_name: 'test user',
         password: 'test_password',
         isFemale: true,
+        actual_name: 'test user'
       };
       return request.post('/api/users')
         .send(newUser)
@@ -79,11 +80,11 @@ describe('/api', () => {
     });
     describe('/:username', () => {
       it('GET - 200 & returns specified user when provided with username', () => request
-        .get(`/api/users/${completedWorkoutsDocs[0].user_name}`)
+        .get(`/api/users/${usersDocs[0].user_name}`)
         .expect(200)
         .then((res) => {
-          expect(res.body.user).to.have.property('user_name', `${completedWorkoutsDocs[0].user_name}`);
-          expect(res.body.user.user_name).to.equal(`${completedWorkoutsDocs[0].user_name}`);
+          expect(res.body.user).to.have.property('user_name', `${usersDocs[0].user_name}`);
+          expect(res.body.user.user_name).to.equal(`${usersDocs[0].user_name}`);
         }));
       it('GET - returns 404 for a get request on wrong user', () => request
         .get('/api/users/wronguser')
@@ -93,7 +94,7 @@ describe('/api', () => {
         }));
       it('PATCH - 200 and successful update of username', () => {
         const newName = { newName: 'patch-test' };
-        return request.patch(`/api/users/${completedWorkoutsDocs[0].user_name}`)
+        return request.patch(`/api/users/${usersDocs[0].user_name}`)
           .send(newName)
           .expect(200)
           .then((res) => {
@@ -110,7 +111,7 @@ describe('/api', () => {
             expect(res.body.msg).to.equal("Please enter username");
           });
       });
-      it('DELETE - 204 & successful deletion', () => request.delete(`/api/users/${completedWorkoutsDocs[0].user_name}`)
+      it('DELETE - 204 & successful deletion', () => request.delete(`/api/users/${usersDocs[0].user_name}`)
         .expect(204)
         .then((res) => {
           expect(res.status).to.equal(204);
@@ -122,7 +123,7 @@ describe('/api', () => {
         }));
       describe('/workouts', () => {
         it('GET - 200 & gets all saved workouts of the username', () => request
-          .get(`/api/users/${completedWorkoutsDocs[0].user_name}/saved_workouts`)
+          .get(`/api/users/${usersDocs[0].user_name}/saved_workouts`)
           .expect(200)
           .then((res) => {
             expect(res.body).to.have.key('userSaved');
@@ -130,7 +131,7 @@ describe('/api', () => {
       });
       describe('/completed_workouts', () => {
         it('GET - 200 and all user completed workouts', () => {
-          return request.get(`/api/users/${completedWorkoutsDocs[0].user_name}/completed_workouts`)
+          return request.get(`/api/users/${usersDocs[0].user_name}/completed_workouts`)
             .expect(200)
             .then((res) => {
               expect(res.body.userCompleted[0]).to.have.property('workout');
@@ -209,14 +210,14 @@ describe('/api', () => {
       .get('/api/muscles')
       .expect(200)
       .then((res) => {
-        expect(res.body.muscles).to.have.length(10);
+        expect(res.body.muscles).to.have.length(14);
       }));
     describe('/:muscle', () => {
       it('GET - 200 & returns the muscle name and description', () => request
         .get(`/api/muscles/${musclesDocs[0].muscle_name}`)
         .expect(200)
         .then((res) => {
-          expect(res.body.muscle[0].muscle_name).to.equal('Chest');
+          expect(res.body.muscle[0].muscle_name).to.equal('abdominals');
         }));
     });
     it('returns 404 for a get request on wrong muscle', () => request
@@ -231,7 +232,7 @@ describe('/api', () => {
       .get('/api/exercises')
       .expect(200)
       .then((res) => {
-        expect(res.body.exercises).to.have.length(10);
+        expect(res.body.exercises).to.have.length(24);
         expect(res.body.exercises[0]).to.have.property('major_muscle');
       }));
     it('POST - 201 and successfully adds an exercise to the database', () => {
