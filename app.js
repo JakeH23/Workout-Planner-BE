@@ -4,10 +4,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const listEndpoints = require('express-list-endpoints');
 const apiRouter = require('./routes/api');
-const { DB_URL } = process.env.NODE_ENV === 'production' ? process.env : require('./config/config')
+const { DB_URL } = process.env.NODE_ENV === 'production' ? process.env : require('./config');
 const { handle400s, handle404s, handle500s } = require('./errors/index');
 
-console.log(DB_URL)
 mongoose
   .connect(DB_URL)
   .then(console.log('connected'))
