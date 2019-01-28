@@ -5,11 +5,11 @@ exports.getUserCompletedWorkouts = (req, res, next) => {
   CompletedWorkouts.find()
     .then((completedWorkouts) => {
       const userCompleted = completedWorkouts.map(workout => {
-        if (workout.user_name === req.params.username) {
+        if (workout.completed_by === req.params.username) {
           return workout;
         };
       }).filter(user => user);
-      // if (!userCompleted.length) return Promise.reject({ status: 404, msg: 'No workouts found' });
+      if (!userCompleted.length) return Promise.reject({ status: 404, msg: 'No workouts added' });
 
       res.status(200).send({ userCompleted });
     })
@@ -18,12 +18,13 @@ exports.getUserCompletedWorkouts = (req, res, next) => {
 
 exports.addCompletedWorkout = async (req, res, next) => {
   const completedWorkout = await findWorkout(req.params.workout_name)
-  const { _id, created_by, user_name } = completedWorkout[0]
+  const { _id, name } = completedWorkout[0];
   const newCompletedWorkout = {
     workout: _id,
-    user_id: created_by,
-    user_name,
-  }
+    workout_name: name,
+    completed_by: req.body.completed_by,
+   
+  };
   CompletedWorkouts.create(newCompletedWorkout)
     .then(workout => res.status(201).send({ workout }))
     .catch((next));

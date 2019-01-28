@@ -49,7 +49,7 @@ describe('/api', () => {
       .get('/api/users')
       .expect(200)
       .then((res) => {
-        expect(res.body.users).to.have.length(3);
+        expect(res.body.users).to.have.length(5);
         expect(res.body.users[0]).to.have.property('user_name');
       }));
     it(' POST - 201 & returns created user', () => {
@@ -145,7 +145,7 @@ describe('/api', () => {
       .get('/api/workouts')
       .expect(200)
       .then((res) => {
-        expect(res.body.workouts).to.have.length(4);
+        expect(res.body.workouts).to.have.length(7);
       }));
     it('POST - 201 and a confirmation message', () => {
       const workout = {
