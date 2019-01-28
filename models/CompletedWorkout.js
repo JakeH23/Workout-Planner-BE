@@ -12,12 +12,10 @@ const CompletedWorkoutSchema = new Schema({
     ref: 'workouts',
     required: true,
   },
-  user_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
-    required: true,
+  workout_name: {
+    type: String,
   },
-  user_name: {
+  completed_by: {
     type: String,
   },
 });
