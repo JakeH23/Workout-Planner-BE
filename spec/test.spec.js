@@ -131,7 +131,7 @@ describe('/api', () => {
       });
       describe('/completed_workouts', () => {
         it('GET - 200 and all user completed workouts', () => {
-          return request.get(`/api/users/${usersDocs[0].user_name}/completed_workouts`)
+          return request.get(`/api/users/charlie/completed_workouts`)
             .expect(200)
             .then((res) => {
               expect(res.body.userCompleted[0]).to.have.property('workout');
