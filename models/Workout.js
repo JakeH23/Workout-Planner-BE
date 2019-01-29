@@ -7,7 +7,9 @@ const WorkoutSchema = new Schema({
     type: String,
     required: true,
   },
-  exercises: [{ type: mongoose.Schema.Types.ObjectId, ref: 'exercises' }],
+  exercises: {
+    type: Array,
+  },
   created_at: {
     type: Date,
     default: Date.now(),

@@ -14,10 +14,10 @@ exports.formatExercises = (exercises, userDocs) => exercises.map((exercise) => {
 });
 
 exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((workout) => {
-  const arr = []
-  const findExerciseId = exerciseDocs.find(exercise => workout.exercises.forEach(ex => {
-    if (ex === exercise.title) arr.push(exercise._id)
-  }))
+  const arr = [];
+  exerciseDocs.find(exercise => workout.exercises.forEach(ex => {
+    if (ex === exercise.title) arr.push(exercise.title)
+  }));
 
 
   const findUserId = userDocs.find(user => user.user_name === workout.created_by)._id;
@@ -27,7 +27,7 @@ exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((wor
     ...workout,
     created_by: findUserId,
     user_name: findUserName,
-    exercises: arr
+    exercises: arr,
   };
 });
 
@@ -42,6 +42,5 @@ exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs) => completedWo
 
 exports.findWorkout = async (workoutName) => {
   const newWorkout = await Workouts.find({ name: workoutName }).then(workout => (workout));
-
   return newWorkout;
 };
