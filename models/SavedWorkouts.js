@@ -13,9 +13,8 @@ const SavedWorkoutSchema = new Schema({
   workout: {
     type: String,
   },
-  Exercises: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'exercises',
+  exercises: {
+    type: Array,
   },
   created_by: {
     type: String,
