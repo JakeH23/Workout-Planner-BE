@@ -15,6 +15,7 @@ exports.getAllWorkouts = (req, res, next) => {
 exports.addWorkoutToSavedWorkouts = async (req, res, next) => {
   const selectedWorkout = await findWorkout(req.params.workout_name);
   const { exercises, user_name, name } = selectedWorkout[0];
+  console.log(selectedWorkout[0]);
   const userSavedWorkout = {
     workout: name,
     exercises,
