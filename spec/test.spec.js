@@ -202,6 +202,16 @@ describe('/api', () => {
         .then((res) => {
           expect(res.status).to.equal(404);
         }));
+      describe('/save/:username', () => {
+        it('POST - 201 and successfully posts a workout to the user saved workouts', () => {
+          return request
+            .post('/api/workouts/workout%201/save/charlie')
+            .expect(201)
+            .then((res) => {
+              expect(res.status).to.equal(201);
+            });
+        });
+      });
     });
   });
   describe('/muscles', () => {
