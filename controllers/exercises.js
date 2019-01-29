@@ -21,12 +21,15 @@ exports.getSingleExercise = (req, res, next) => {
 };
 
 exports.postNewExercise = (req, res, next) => {
+  const {
+    title, major_muscle, minor_muscles, content, created_by,
+  } = req.body;
   const newExercise = {
-    title: req.body.title,
-    major_muscle: req.body.major_muscle,
-    minor_muscles: req.body.minor_muscles,
-    content: req.body.content,
-    created_by: req.body.created_by,
+    title,
+    major_muscle,
+    minor_muscles,
+    content,
+    created_by,
   };
   Exercise.create(newExercise)
     .then(exercise => res.status(201).send({ exercise }))
