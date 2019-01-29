@@ -21,13 +21,14 @@ exports.getSingleUser = (req, res, next) => {
 };
 
 exports.changeUserDetails = (req, res, next) => {
-  Users.updateOne({ user_name: req.params.username }, { $set: { user_name: req.body.newName, isFemale: req.body.isFemale } })
+  Users.updateOne({ user_name: req.params.username },
+    { $set: { user_name: req.body.newName, isFemale: req.body.isFemale } })
     .then((user) => {
       if (user.n === 0) return Promise.reject({ status: 404, msg: 'Please enter username' });
       res.status(200).send({ user });
     })
     .catch(next);
-}
+};
 
 exports.postNewUser = (req, res, next) => {
   const newUser = req.body;
@@ -42,19 +43,19 @@ exports.postNewUser = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
   Users.deleteOne({ user_name: req.params.username })
     .then((user) => {
-      if (user.result.n === 0) return Promise.reject({ status: 404, msg: 'User not found' })
+      if (user.result.n === 0) return Promise.reject({ status: 404, msg: 'User not found' });
       res.status(204).send({ msg: 'Successful Deletion' });
     })
-    .catch(next)
+    .catch(next);
 };
 
 exports.getUserSavedWorkouts = (req, res, next) => {
   SavedWorkouts.find()
     .then((savedWorkouts) => {
-      const userSaved = savedWorkouts.map(workout => {
+      const userSaved = savedWorkouts.map((workout) => {
         if (workout.saved_by === req.params.username) {
           return workout;
-        };
+        }
       }).filter(user => user);
       res.status(200).send({ userSaved });
     })

@@ -15,8 +15,8 @@ exports.formatExercises = (exercises, userDocs) => exercises.map((exercise) => {
 
 exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((workout) => {
   const arr = [];
-  exerciseDocs.find(exercise => workout.exercises.forEach(ex => {
-    if (ex === exercise.title) arr.push(exercise.title)
+  exerciseDocs.find(exercise => workout.exercises.forEach((ex) => {
+    if (ex === exercise.title) arr.push(exercise.title);
   }));
 
 
@@ -31,13 +31,15 @@ exports.formatWorkouts = (workouts, exerciseDocs, userDocs) => workouts.map((wor
   };
 });
 
-exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs) => completedWorkouts.map((completedWorkout) => {
-  const findWorkoutId = workoutDocs.find(workout => workout.name === completedWorkout.workout)._id;
-  return {
-    ...completedWorkout,
-    workout: findWorkoutId,
-  };
-});
+exports.formatCompleteWorkouts = (completedWorkouts, workoutDocs) => completedWorkouts
+  .map((completedWorkout) => {
+    const findWorkoutId = workoutDocs.find(workout => workout.name
+    === completedWorkout.workout)._id;
+    return {
+      ...completedWorkout,
+      workout: findWorkoutId,
+    };
+  });
 
 
 exports.findWorkout = async (workoutName) => {

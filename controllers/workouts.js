@@ -20,10 +20,19 @@ exports.addWorkoutToSavedWorkouts = async (req, res, next) => {
     exercises,
     created_by: user_name,
     saved_by: req.params.username,
-  }
+  };
   SavedWorkouts.create(userSavedWorkout)
     .then(workout => res.status(201).send({ workout }))
     .catch(next);
+};
+
+exports.deleteSavedWorkout = (req, res, next) => {
+  SavedWorkouts.deleteOne({ workout: req.body.workout_name })
+    .then((workout) => {
+      console.log(workout.result);
+      if (workout.result.n === 0) return Promise.reject({ status: 404, msg: 'Workout not Found' });
+      res.status(204).send({ msg: 'Successful deletion' });
+    });
 };
 
 exports.getSingleWorkout = (req, res, next) => {
@@ -54,7 +63,8 @@ exports.deleteWorkout = (req, res, next) => {
     .then(
       (workout) => {
         if (workout.result.n === 0) return Promise.reject({ status: 404, msg: 'Workout not found' });
-        res.status(204).send({ msg: 'Successful deletion' })
-      })
+        res.status(204).send({ msg: 'Successful deletion' });
+      },
+    )
     .catch(next);
 };

@@ -17,8 +17,7 @@ exports.getSingleExercise = (req, res, next) => {
       [exercise] = exercise;
       res.send({ exercise });
     })
-    .catch(next)
-    ;
+    .catch(next);
 };
 
 exports.postNewExercise = (req, res, next) => {
@@ -50,10 +49,9 @@ exports.getExerciseByMajorMuscle = (req, res, next) => {
 exports.getExerciseByUserId = (req, res, next) => {
   Exercise.find()
     .then((exercises) => {
-      const usersExercises = exercises.map(exercise => {
-        if (exercise.user_name === req.params.created_by)
-          return exercise
-      }).filter(user => user)
+      const usersExercises = exercises.map((exercise) => {
+        if (exercise.user_name === req.params.created_by) return exercise;
+      }).filter(user => user);
       if (!exercises.length || !usersExercises.length) return Promise.reject({ status: 404, msg: 'This user has no exercises' });
       res.status(200).send({ usersExercises });
     })
