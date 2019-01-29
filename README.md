@@ -25,8 +25,8 @@ The application is hosted on Heroku, and can be accessed at ```https://nc-projec
 
 ## Built With
 
-[MongoDB](https://www.mongodb.com/) - The Cloud Database used.
-[Express](https://expressjs.com/) - Web Framework to manage HTTP requests.
+*[MongoDB](https://www.mongodb.com/) - The Cloud Database used.
+*[Express](https://expressjs.com/) - Web Framework to manage HTTP requests.
 
 ## License
 
