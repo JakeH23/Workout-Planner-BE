@@ -27,6 +27,7 @@ exports.addWorkoutToSavedWorkouts = async (req, res, next) => {
 };
 
 exports.deleteSavedWorkout = (req, res, next) => {
+  console.log(req.body);
   SavedWorkouts.deleteOne({ workout: req.body.workout_name })
     .then((workout) => {
       if (workout.result.n === 0) return Promise.reject({ status: 404, msg: 'Workout not Found' });
