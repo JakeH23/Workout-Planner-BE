@@ -1,11 +1,29 @@
 [
   {
-    "created_at": 1471522072389,
-
+    "created_at": 1548332149000,
     "workout": "workout 1",
 
     "workout_name": "workout 1",
 
-    "completed_by": "charlie"
-  }
+    "completed_by": "mike"
+  },
+    {
+      "created_at": 1548504949000,
+      "workout": "workout 2",
+      "workout_name": "workout 2",
+      "completed_by": "mike"
+    },
+    {
+      "created_at": 1548677749000,
+      "workout": "Butt Buster",
+      "workout_name": "Butt Buster",
+      "completed_by": "mike"
+    },
+    {
+      "created_at": 1548764149000,
+      "workout": "Body Weight Pump",
+      "workout_name": "Body Weight Pump",
+      "completed_by": "mike"
+    }
+    
 ]

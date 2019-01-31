@@ -11,7 +11,9 @@ mongoose
   .connect(DB_URL);
 
 app.use(bodyParser.json());
+
 app.use(cors());
+
 app.use((req, res, next) => {
   if (req.url === '/api' || req.url === '/api/') {
     if (req.method === 'GET') {
